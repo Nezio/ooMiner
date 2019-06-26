@@ -68,7 +68,7 @@
     <Compile Include="Assets\Scripts\LevelMover.cs" />
     <Compile Include="Assets\Scripts\PlatformMover.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
-    <Compile Include="Assets\Scripts\Stripe.cs" />
+    <Compile Include="Assets\Scripts\Strip.cs" />
     <Compile Include="Assets\Scripts\Tools.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/Development/Unity/ooMiner/ooMiner/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>

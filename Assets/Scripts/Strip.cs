@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Stripe : MonoBehaviour
+public class Strip : MonoBehaviour
 {
+    [Tooltip("This strip can't be spawned after strips added to this array.")]
+    public Strip[] cantSpawnAfter;
+
     [SerializeField]
     private string type;
 

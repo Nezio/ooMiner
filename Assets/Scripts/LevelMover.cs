@@ -24,15 +24,14 @@ public class LevelMover : MonoBehaviour
         }
     }
     
-
     private void MoveLevel()
     {
-        // move stripes
-        GameObject[] stripes = level.GetStripes();
-        for(int i = 0; i < stripes.Length; i++)
+        // move strips
+        GameObject[] strips = level.GetStrips();
+        for(int i = 0; i < strips.Length; i++)
         {
-            Vector3 stripeLocPos = stripes[i].transform.localPosition;
-            stripes[i].transform.localPosition = new Vector3(stripeLocPos.x, stripeLocPos.y, stripeLocPos.z - maxLevelDistance);
+            Vector3 stripLocPos = strips[i].transform.localPosition;
+            strips[i].transform.localPosition = new Vector3(stripLocPos.x, stripLocPos.y, stripLocPos.z - maxLevelDistance);
         }
 
         // player

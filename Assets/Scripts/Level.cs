@@ -4,26 +4,36 @@ using UnityEngine;
 
 public class Level : MonoBehaviour
 {
-    public GameObject[] stripeGallery;
-    public int stripesArraySize = 40;
-    public int stripePoolSize = 30;
-    public int generateStripeCount = 10;    // number of stripes to be generated at a time
+    public GameObject startingStrypeType;
+    public GameObject[] stripGallery;
+    public int stripsArraySize = 40;
+    public int stripPoolSize = 30;
+    public int generateStripCount = 10;    // number of strips to be generated at a time
 
-    private GameObject[] stripes;
-    private GameObject[] stripesPool;
+    private GameObject[] strips;
+    private GameObject[] stripsPool;
     private Camera mainCamera;
     private CameraController cameraController;
 
     private void Awake()
     {
-        // initialize level
-        stripes = new GameObject[stripesArraySize];
-        for (int i = 0; i < stripes.Length; i++)
+        // initialize level / spawn initial strips
+        strips = new GameObject[stripsArraySize];
+        for (int i = 0; i < strips.Length; i++)
         {
-            GameObject stripe = GameObject.Instantiate(stripeGallery[Random.Range(0, stripeGallery.Length)], transform, false);
-            stripe.transform.localPosition = new Vector3(0, -3, i);
+            GameObject nextStripType;
 
-            stripes[i] = stripe;
+            // first few are always the same
+            if(i < 15)
+                nextStripType = startingStrypeType;
+            else
+                nextStripType = GenerateNextStrip(strips[i-1]);
+
+            // instantiate selected strip and add to array of strips
+            strips[i] = GameObject.Instantiate(nextStripType, transform, false);
+
+            // position the new strip
+            strips[i].transform.localPosition = new Vector3(0, -3 + nextStripType.transform.position.y, i);
         }
     }
 
@@ -34,97 +44,111 @@ public class Level : MonoBehaviour
         cameraController = mainCamera.GetComponent<CameraController>();
 
         
-        // initialize stripes pool
-        stripesPool = new GameObject[stripePoolSize];
+        // initialize strips pool
+        stripsPool = new GameObject[stripPoolSize];
 
 
+    }
+
+    private void Update()
+    {
+        // check if new blocks should be generated
+        GenerateCheck();
     }
 
     public void GenerateCheck()
     {
-        // just in case stripes aren't initialized somehow
-        if(stripes[0] == null)
+        // just in case strips aren't initialized somehow
+        if(strips[0] == null)
             return;
 
-        // how far is the camera from the first stripe
-        float distanceCameraToFirstStripe = mainCamera.transform.position.z - stripes[0].transform.position.z;
-        //Debug.Log(distanceCameraToFirstStripe);
-        // how many stripes are out of view
-        int stripesOutOfView = Mathf.FloorToInt(distanceCameraToFirstStripe) - cameraController.cameraBackwardsViewDistance;
+        // how far is the camera from the first strip
+        float distanceCameraToFirstStrip = mainCamera.transform.position.z - strips[0].transform.position.z;
+        //Debug.Log(distanceCameraToFirstStrip);
+        // how many strips are out of view
+        int stripsOutOfView = Mathf.FloorToInt(distanceCameraToFirstStrip) - cameraController.cameraBackwardsViewDistance;
 
-        if (stripesOutOfView >= generateStripeCount)
-            GenerateStripes();
+        if (stripsOutOfView >= generateStripCount)
+            GenerateStrips();
 
     }
 
-    private void GenerateStripes()
+    private GameObject GenerateNextStrip(GameObject previousStrip)
     {
-        // note: n is number of stripes to be generated; n = generateStripeCount
+        // make new tmp gallery array that is not going to contain strips that can't be spawned after prevoius strip type
 
-        // reorder stripesPool array so that null values are at the front
-        Tools.BackfillArray(ref stripesPool);
 
-        // if there are some non-null entries in the first n slots of stripesPool-> destroy those game objects
-        for(int i = 0; i < generateStripeCount; i++)
+        GameObject strip = stripGallery[Random.Range(0, stripGallery.Length)];
+
+        return strip;
+    }
+
+    private void GenerateStrips()
+    {
+        // note: n is number of strips to be generated; n = generateStripCount
+
+        // reorder stripsPool array so that null values are at the front
+        Tools.BackfillArray(ref stripsPool);
+
+        // if there are some non-null entries in the first n slots of stripsPool -> destroy those game objects
+        for(int i = 0; i < generateStripCount; i++)
         {
-            if (stripesPool[i] != null)
+            if (stripsPool[i] != null)
             {
-                GameObject.Destroy(stripesPool[i]);
+                GameObject.Destroy(stripsPool[i]);
                 //Debug.Log("destroyed");
             }
         }
 
-        // shift stripesPool array by n slots back
-        Tools.ShiftArrayBackbyN(generateStripeCount, ref stripesPool);
+        // shift stripsPool array by n slots back
+        Tools.ShiftArrayBackbyN(generateStripCount, ref stripsPool);
 
-        // save first n stripes to last n pooling array slots
-        for(int i = 0; i < generateStripeCount; i++)
+        // save first n strips to last n pooling array slots
+        for(int i = 0; i < generateStripCount; i++)
         {
-            stripesPool[stripesPool.Length - 1 - i] = stripes[i];
+            stripsPool[stripsPool.Length - 1 - i] = strips[i];
         }
 
 
-        // shift stripes array by n backwards
-        Tools.ShiftArrayBackbyN(generateStripeCount, ref stripes);
+        // shift strips array by n backwards
+        Tools.ShiftArrayBackbyN(generateStripCount, ref strips);
 
-        // fill last n slots of stripes array by generating random stripes; look at stripesPool to check if already exists
-        Vector3 lastStripePos = stripes[stripes.Length - 1].transform.localPosition;
+        // fill last n slots of strips array by generating random strips; look at stripsPool to check if already exists
+        Vector3 lastStripLocPos = strips[strips.Length - 1].transform.localPosition;
         int newZOffset = 1;     // helper counter; this could also be calculated from i index
-        for(int i = stripes.Length-generateStripeCount; i < stripes.Length; i++)
+        for(int i = strips.Length-generateStripCount; i < strips.Length; i++)
         {
-            // select random next stripe type
-            GameObject nextStripeType = stripeGallery[Random.Range(0, stripeGallery.Length)];
-
-            GameObject stripe = null;   // next stripe object
-
+            GameObject nextStrip = null;   // next strip object
+            // select random next strip type from refabs
+            GameObject nextStripType = GenerateNextStrip(strips[i-1]);
+            
             // check the pool
-            for (int j = 0; j < stripesPool.Length; j++)
+            for (int j = 0; j < stripsPool.Length; j++)
             {
-                if(stripesPool[j] != null && stripesPool[j].GetComponent<Stripe>().GetType() == nextStripeType.GetComponent<Stripe>().GetType())
+                if(stripsPool[j] != null && stripsPool[j].GetComponent<Strip>().GetType() == nextStripType.GetComponent<Strip>().GetType())
                 { // found match
-                    stripe = stripesPool[j];
-                    stripesPool[j] = null;
+                    nextStrip = stripsPool[j];
+                    stripsPool[j] = null;
                     break;
                 }
             }
+            // in case there is no matching strip found in the pool
+            if(nextStrip == null)
+                nextStrip = GameObject.Instantiate(nextStripType, transform, false);
 
-            // in case there is no matching stripe found in the pool
-            if(stripe == null)
-                stripe = GameObject.Instantiate(nextStripeType, transform, false);
-
-            // set position of this new stripe
-            stripe.transform.localPosition = new Vector3(lastStripePos.x, lastStripePos.y, lastStripePos.z + newZOffset);
-            
-            stripes[i] = stripe;    // set reference to this new stripe
+            // set position of this new strip
+            nextStrip.transform.localPosition = new Vector3(0, -3 + nextStripType.transform.position.y, lastStripLocPos.z + newZOffset);
+            // set reference to this new strip
+            strips[i] = nextStrip;
 
             newZOffset++;
         }
 
     }
 
-    public GameObject[] GetStripes()
+    public GameObject[] GetStrips()
     {
-        return stripes;
+        return strips;
     }
 
     
