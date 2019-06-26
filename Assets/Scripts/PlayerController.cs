@@ -9,6 +9,11 @@ public class PlayerController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.W))
         { // move forward
             transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 1);
+
+            // detect distance and call fn to generate next stripes
+            // maybe camera can do this instead
+
+            // TODO: maybe not here; detect distance from origin and snap back every ~500 blocks (less while testing)
         }
         else if (Input.GetKeyDown(KeyCode.S))
         { // move backwards
