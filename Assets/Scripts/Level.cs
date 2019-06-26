@@ -69,7 +69,10 @@ public class Level : MonoBehaviour
         for(int i = 0; i < generateStripeCount; i++)
         {
             if (stripesPool[i] != null)
+            {
                 GameObject.Destroy(stripesPool[i]);
+                Debug.Log("destroyed");
+            }
         }
 
         // shift stripesPool array by n slots back
@@ -87,16 +90,33 @@ public class Level : MonoBehaviour
 
         // fill last n slots of stripes array by generating random stripes; look at stripesPool to check if already exists
         Vector3 lastStripePos = stripes[stripes.Length - 1].transform.localPosition;
-        int newZOffset = 1;
+        int newZOffset = 1;     // helper counter; this could also be calculated from i index
         for(int i = stripes.Length-generateStripeCount; i < stripes.Length; i++)
         {
-            // check the pool
-            // if it has been taken from the pool, set that pool entry to null
+            // select random next stripe type
+            GameObject nextStripeType = stripeGallery[Random.Range(0, stripeGallery.Length)];
 
-            // in case there is no needed stripe in the pool
-            GameObject stripe = GameObject.Instantiate(stripeGallery[Random.Range(0, stripeGallery.Length)], transform, false);
-            stripe.transform.localPosition = new Vector3(lastStripePos.x, lastStripePos.y, lastStripePos.z+newZOffset);
-            stripes[i] = stripe;
+            GameObject stripe = null;   // next stripe object
+
+            // check the pool
+            for (int j = 0; j < stripesPool.Length - 1; j++)
+            {
+                if(stripesPool[j] != null && stripesPool[j].GetComponent<Stripe>().GetType() == nextStripeType.GetComponent<Stripe>().GetType())
+                { // found match
+                    stripe = stripesPool[j];
+                    stripesPool[j] = null;
+                    break;
+                }
+            }
+
+            // in case there is no matching stripe found in the pool
+            if(stripe == null)
+                stripe = GameObject.Instantiate(nextStripeType, transform, false);
+
+            // set position of this new stripe
+            stripe.transform.localPosition = new Vector3(lastStripePos.x, lastStripePos.y, lastStripePos.z + newZOffset);
+            
+            stripes[i] = stripe;    // set reference to this new stripe
 
             newZOffset++;
         }
