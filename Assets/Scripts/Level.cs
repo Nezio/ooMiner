@@ -9,7 +9,6 @@ public class Level : MonoBehaviour
     public int stripePoolSize = 30;
     public int generateStripeCount = 10;    // number of stripes to be generated at a time
 
-
     private GameObject[] stripes;
     private GameObject[] stripesPool;
     private Camera mainCamera;
@@ -71,7 +70,7 @@ public class Level : MonoBehaviour
             if (stripesPool[i] != null)
             {
                 GameObject.Destroy(stripesPool[i]);
-                Debug.Log("destroyed");
+                //Debug.Log("destroyed");
             }
         }
 
@@ -99,7 +98,7 @@ public class Level : MonoBehaviour
             GameObject stripe = null;   // next stripe object
 
             // check the pool
-            for (int j = 0; j < stripesPool.Length - 1; j++)
+            for (int j = 0; j < stripesPool.Length; j++)
             {
                 if(stripesPool[j] != null && stripesPool[j].GetComponent<Stripe>().GetType() == nextStripeType.GetComponent<Stripe>().GetType())
                 { // found match
@@ -121,6 +120,11 @@ public class Level : MonoBehaviour
             newZOffset++;
         }
 
+    }
+
+    public GameObject[] GetStripes()
+    {
+        return stripes;
     }
 
     

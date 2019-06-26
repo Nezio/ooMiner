@@ -332,6 +332,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13c40c6f4934f7342acc39c0fce901f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &255811924
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 255811926}
+  - component: {fileID: 255811925}
+  m_Layer: 0
+  m_Name: LevelMover
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &255811925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 255811924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e44ec011928ffd240839e3b1474018e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxLevelDistance: 100
+  level: {fileID: 2084646547}
+  player: {fileID: 140676266}
+--- !u!4 &255811926
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 255811924}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.654929, y: 9.110179, z: -0.75219643}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &417053891
 GameObject:
   m_ObjectHideFlags: 0
@@ -624,7 +670,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &963194225
 GameObject:
@@ -704,11 +750,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.3856009, y: -0.048426483, z: 0.019847432, w: 0.92118025}
-  m_LocalPosition: {x: 0.22, y: 9.45, z: 0.27}
+  m_LocalPosition: {x: 0.22000001, y: 9.45, z: 0.27}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 45.426003, y: -6.045, z: -0.064}
 --- !u!114 &963194229
 MonoBehaviour:
@@ -722,6 +768,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b92a07b6b9ac8647bf8245ecdf9097c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cameraSpeed: 5
   cameraBackwardsViewDistance: 5
   Level: {fileID: 2084646547}
 --- !u!1 &1050223365
@@ -1032,7 +1079,7 @@ Transform:
   - {fileID: 417053896}
   - {fileID: 476257261}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2084646546
 GameObject:

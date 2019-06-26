@@ -16,10 +16,6 @@ public static class Tools
     { // go trough an array and group null values at the front
         // go trough the array backwards
         // if null value is found find front-most non-null value and switch them
-
-        // if array is empty -> don't do anything
-
-
         for(int i = array.Length-1; i > 0; i--)
         {
             if(array[i] == null)
@@ -38,6 +34,7 @@ public static class Tools
                 }
             }
         }
+
     }
 
 }
