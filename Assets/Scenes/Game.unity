@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 140676272}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -474,7 +474,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b92a07b6b9ac8647bf8245ecdf9097c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraSpeed: 3
+  cameraSpeed: 1
   cameraBackwardsViewDistance: 5
 --- !u!1 &2084646546
 GameObject:
@@ -508,7 +508,7 @@ MonoBehaviour:
   startingStrypeType: {fileID: 4637843022776097577, guid: 17e9ab95b215f9f4b86e6ca2f809ba39,
     type: 3}
   stripsGallery:
-  - {fileID: 4637843022776097577, guid: defe7210da22a414e91abbe0e3b089aa, type: 3}
+  - {fileID: 4637843022776097577, guid: e587aeb9f9c216443afcb5968bb56e12, type: 3}
   - {fileID: 4637843022776097577, guid: 17e9ab95b215f9f4b86e6ca2f809ba39, type: 3}
   - {fileID: 4637843022776097577, guid: b9a66d3ffe15a0a4c8b42e8a03797e88, type: 3}
   stripsArraySize: 40

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public float cameraSpeed = 10;
+    public float cameraSpeed = 3;
     public int cameraBackwardsViewDistance = 5; // how many blocks does camera see behind it's current position
     
     void Update()
