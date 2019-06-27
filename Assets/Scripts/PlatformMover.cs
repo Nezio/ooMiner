@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlatformMover : MonoBehaviour
-{
+{ // DEPRECATED
     public float maxMoveOffset = 3f;
     public float moveStep = 0.1f;
 
