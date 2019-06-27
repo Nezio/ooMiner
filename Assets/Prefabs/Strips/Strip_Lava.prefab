@@ -104,6 +104,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecc549e2c78229a4485ee63b57507f60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cantSpawnAfter:
+  nextStripBlacklist:
   - {fileID: 3816563604757720175, guid: b9a66d3ffe15a0a4c8b42e8a03797e88, type: 3}
   type: lava

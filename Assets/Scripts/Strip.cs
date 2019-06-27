@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Strip : MonoBehaviour
 {
-    [Tooltip("This strip can't be spawned after strips added to this array.")]
-    public Strip[] cantSpawnAfter;
+    [Tooltip("Strips in this list can't be spawned after this strip type.")]
+    public Strip[] nextStripBlacklist;
 
     [SerializeField]
     private string type;

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Level : MonoBehaviour
 {
     public GameObject startingStrypeType;
-    public GameObject[] stripGallery;
+    public GameObject[] stripsGallery;
     public int stripsArraySize = 40;
     public int stripPoolSize = 30;
     public int generateStripCount = 10;    // number of strips to be generated at a time
@@ -75,10 +75,27 @@ public class Level : MonoBehaviour
 
     private GameObject GenerateNextStrip(GameObject previousStrip)
     {
-        // make new tmp gallery array that is not going to contain strips that can't be spawned after prevoius strip type
+        // get strips that can't be spawned next
+        Strip[] blacklist = previousStrip.GetComponent<Strip>().nextStripBlacklist;
 
+        // make new tmp strip gallery list that is not going to contain strips that can't be spawned after previous strip type
+        List<GameObject> tmpStripsGallery = new List<GameObject>();
+        for (int i = 0; i < stripsGallery.Length; i++)
+        { // for each element that could be spawned...
+            bool blacklisted = false;
+            for(int j = 0; j < blacklist.Length; j++)
+            { // ..check if it is blacklisted trough nextStripBlacklist array
+                if(stripsGallery[i].GetComponent<Strip>().GetType() == blacklist[j].GetType())
+                {
+                    blacklisted = true;
+                    break;
+                }
+            }
+            if (!blacklisted)
+                tmpStripsGallery.Add(stripsGallery[i]);
+        }
 
-        GameObject strip = stripGallery[Random.Range(0, stripGallery.Length)];
+        GameObject strip = tmpStripsGallery[Random.Range(0, tmpStripsGallery.Count)];
 
         return strip;
     }

@@ -104,4 +104,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecc549e2c78229a4485ee63b57507f60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextStripBlacklist:
+  - {fileID: -7335804877840993259, guid: defe7210da22a414e91abbe0e3b089aa, type: 3}
   type: water

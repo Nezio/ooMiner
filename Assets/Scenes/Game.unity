@@ -507,7 +507,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingStrypeType: {fileID: 4637843022776097577, guid: 17e9ab95b215f9f4b86e6ca2f809ba39,
     type: 3}
-  stripGallery:
+  stripsGallery:
   - {fileID: 4637843022776097577, guid: defe7210da22a414e91abbe0e3b089aa, type: 3}
   - {fileID: 4637843022776097577, guid: 17e9ab95b215f9f4b86e6ca2f809ba39, type: 3}
   - {fileID: 4637843022776097577, guid: b9a66d3ffe15a0a4c8b42e8a03797e88, type: 3}
