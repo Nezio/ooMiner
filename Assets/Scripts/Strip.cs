@@ -10,7 +10,7 @@ public class Strip : MonoBehaviour
     [SerializeField]
     private string type;
 
-    public string GetType()
+    public string GetStripType()
     {
         return type;
     }

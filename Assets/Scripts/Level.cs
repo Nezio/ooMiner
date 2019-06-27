@@ -85,7 +85,7 @@ public class Level : MonoBehaviour
             bool blacklisted = false;
             for(int j = 0; j < blacklist.Length; j++)
             { // ..check if it is blacklisted trough nextStripBlacklist array
-                if(stripsGallery[i].GetComponent<Strip>().GetType() == blacklist[j].GetType())
+                if(stripsGallery[i].GetComponent<Strip>().GetStripType() == blacklist[j].GetStripType())
                 {
                     blacklisted = true;
                     break;
@@ -142,7 +142,7 @@ public class Level : MonoBehaviour
             // check the pool
             for (int j = 0; j < stripsPool.Length; j++)
             {
-                if(stripsPool[j] != null && stripsPool[j].GetComponent<Strip>().GetType() == nextStripType.GetComponent<Strip>().GetType())
+                if(stripsPool[j] != null && stripsPool[j].GetComponent<Strip>().GetStripType() == nextStripType.GetComponent<Strip>().GetStripType())
                 { // found match
                     nextStrip = stripsPool[j];
                     stripsPool[j] = null;
