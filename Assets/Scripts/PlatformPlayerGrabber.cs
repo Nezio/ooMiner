@@ -16,6 +16,10 @@ public class PlatformPlayerGrabber : MonoBehaviour
     {
         if(other.tag == "Player")
         { // player entered the platform
+            // don't do anything if player is falling to an end game
+            if (!other.GetComponent<Rigidbody>().isKinematic)
+                return;
+
             //Debug.Log("grabbing player");
 
             // make player safe (unable to fall off)
