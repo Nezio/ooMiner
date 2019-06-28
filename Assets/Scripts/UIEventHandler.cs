@@ -6,8 +6,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class UIEventHandler : MonoBehaviour
-{
-    
+{    
     public void ExitGame()
     {
         Debug.Log("exit");
@@ -31,7 +30,5 @@ public class UIEventHandler : MonoBehaviour
             Debug.Log("Could not load scene: '" + name + "'!");
         }
     }
-
-
 
 }
