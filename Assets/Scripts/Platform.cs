@@ -70,7 +70,7 @@ public class Platform : MonoBehaviour
         float closestPoint = snapPositions[0];
         for(int i = 0; i < snapPositions.Count; i++)
         {
-            if ((playerLocPos.x - snapPositions[i]) < (playerLocPos.x - closestPoint))
+            if(Mathf.Abs((playerLocPos.x - snapPositions[i])) < Mathf.Abs((playerLocPos.x - closestPoint)))
                 closestPoint = snapPositions[i];
         }
 
