@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelMover : MonoBehaviour
-{
+{ // move the level back every maxLevelDistance units to prevent overflow
     public float maxLevelDistance = 1000;
     public Level level;
     public GameObject player;

@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class UIEventHandlerMenu : MonoBehaviour
-{ // used to respond to UI events (like button clicks) in main and other menus
+public class UIEventHandler : MonoBehaviour
+{
     
     public void ExitGame()
     {
