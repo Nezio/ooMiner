@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : MonoBehaviour
 { // don't add audio manager to every scene - manage all sounds from main menu's audio manager
@@ -34,7 +35,7 @@ public class AudioManager : MonoBehaviour
             s.source.loop = s.loop;
         }
     }
-
+    
     private void Update()
     {
         // enable timescale to set pitch
@@ -110,4 +111,5 @@ public class AudioManager : MonoBehaviour
             s.source.Stop();
         }
     }
+
 }

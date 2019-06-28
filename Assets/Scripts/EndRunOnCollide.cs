@@ -17,7 +17,7 @@ public class EndRunOnCollide : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            Debug.Log("Ending the run.");
+            //Debug.Log("Ending the run.");
             gm.EndRun();
         }
 

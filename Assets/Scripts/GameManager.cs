@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public GameObject pauseButton;
     public GameObject pauseMenu;
     public GameObject gameOverMenu;
+    public AudioSource music;
     
     private void Awake()
     {
@@ -28,6 +29,13 @@ public class GameManager : MonoBehaviour
 
         // hide pause button
         pauseButton.SetActive(false);
+
+        // pause music
+        if(music != null)
+        {
+            music.Pause();
+        }
+
     }
 
     public void Resume()
@@ -43,6 +51,12 @@ public class GameManager : MonoBehaviour
 
         // show pause button
         pauseButton.SetActive(true);
+
+        // resume music
+        if (music != null)
+        {
+            music.Play();
+        }
     }
 
     public void EndRun()
@@ -61,5 +75,14 @@ public class GameManager : MonoBehaviour
 
         // hide pause button
         pauseButton.SetActive(false);
+
+        // play sound
+        AudioManager.instance.PlayOneShot("EndRun");
+
+        // stop music
+        if (music != null)
+        {
+            music.Stop();
+        }
     }
 }

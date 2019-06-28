@@ -56,6 +56,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.W))
             { // move forward
                 transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 1);
+                AudioManager.instance.PlayOneShot("PlayerJump");
             }
             else if (Input.GetKeyDown(KeyCode.S))
             { // move backwards
