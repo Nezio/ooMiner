@@ -95,7 +95,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 120}
   m_MaxSize: {x: 4000, y: 4020}
   vertical: 0
-  controlID: 140
+  controlID: 40
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_MinSize: {x: 436, y: 272}
   m_MaxSize: {x: 14006, y: 10022}
   vertical: 0
-  controlID: 14
+  controlID: 105
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -171,7 +171,7 @@ MonoBehaviour:
   m_MinSize: {x: 436, y: 394}
   m_MaxSize: {x: 14006, y: 14044}
   vertical: 1
-  controlID: 13
+  controlID: 104
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -224,7 +224,7 @@ MonoBehaviour:
   m_MinSize: {x: 817, y: 394}
   m_MaxSize: {x: 22012, y: 14044}
   vertical: 0
-  controlID: 112
+  controlID: 35
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -398,7 +398,7 @@ MonoBehaviour:
   m_ViewDataDictionary: {fileID: 0}
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: -15028
+  m_LastSelectedObjectID: -4420
 --- !u!114 &17
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -435,9 +435,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -0.0634259, y: 2.425685, z: 1.0280521}
+    m_Target: {x: 1.5045171, y: 11.521506, z: -20.279322}
     speed: 2
-    m_Value: {x: -0.0634259, y: 2.425685, z: 1.0280521}
+    m_Value: {x: 1.5045171, y: 11.521506, z: -20.279322}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -466,9 +466,9 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: -0.30478874, y: -0.17680344, z: 0.057600748, w: -0.9343501}
+    m_Target: {x: -0.25935638, y: -0.0603564, z: 0.016113335, w: -0.96401834}
     speed: 2
-    m_Value: {x: -0.30471507, y: -0.1767607, z: 0.057586826, w: -0.93412423}
+    m_Value: {x: -0.25929162, y: -0.060341332, z: 0.016109312, w: -0.96377766}
   m_Size:
     m_Target: 2.0005188
     speed: 2
@@ -616,20 +616,20 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts
+    - Assets/Prefabs/Blocks
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Scripts
+  - Assets/Prefabs/Blocks
   m_LastFoldersGridSize: 16
   m_LastProjectPath: D:\Development\Unity\ooMiner\ooMiner
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 702c0000
-    m_LastClickedID: 11376
-    m_ExpandedIDs: 000000008e2900007c2b0000942b0000702c0000
+    m_SelectedIDs: c42a0000
+    m_LastClickedID: 10948
+    m_ExpandedIDs: 0000000092290000802b0000982b0000742c0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -657,7 +657,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000008e2900007c2b0000942b0000702c0000
+    m_ExpandedIDs: 0000000092290000802b0000982b0000742c0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -684,7 +684,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: e004000000000000ec040000e8040000ea0400003878feff3e2a0000ce2a00006c290000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -777,9 +777,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 4abeffff
-      m_LastClickedID: -16822
-      m_ExpandedIDs: 7e48ffff906fffffe697ffff8efbffff422d0000
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: 8efbffff182d0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 

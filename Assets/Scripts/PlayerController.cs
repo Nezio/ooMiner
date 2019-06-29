@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public int leftBoundary = -4;
+    public int rightBoundary = 4;
+
     private Player player;
     private bool allowMoveForward = true;
     private bool allowMoveBack = true;
@@ -100,6 +103,14 @@ public class PlayerController : MonoBehaviour
         {
             transform.position = new Vector3(transform.position.x - 1, transform.position.y, transform.position.z);
             AudioManager.instance.PlayOneShot("PlayerJump");
+
+            // if player is on left boundary prevent further movement to the left
+            if (player.transform.position.x <= leftBoundary)
+                allowMoveLeft = false;
+            // if player is not on right boundary allow movement to the right
+            if (player.transform.position.x < rightBoundary)
+                allowMoveRight = true;
+
         }
     }
     private void MoveRight()
@@ -108,6 +119,13 @@ public class PlayerController : MonoBehaviour
         {
             transform.position = new Vector3(transform.position.x + 1, transform.position.y, transform.position.z);
             AudioManager.instance.PlayOneShot("PlayerJump");
+
+            // if player is not on left boundary allow movement to the left
+            if (player.transform.position.x > leftBoundary)
+                allowMoveLeft = true;
+            // if player is on right boundary prevent further movement to the right
+            if (player.transform.position.x >= rightBoundary)
+                allowMoveRight = false;
         }
     }
 

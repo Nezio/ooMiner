@@ -67,22 +67,22 @@ public class PlayerSensor : MonoBehaviour
 
         if (transform.position.z == biggestZ)
         { // forward
-            Debug.Log("Forward");
+            //Debug.Log("Forward collision");
             playerController.SetAllowMove("forward", value);
         }
         else if (transform.position.z == smallestZ)
         { // back
-            Debug.Log("Back");
+            //Debug.Log("Back collision");
             playerController.SetAllowMove("back", value);
         }
         else if (transform.position.x == biggestX)
         { // right
-            Debug.Log("Right");
+            //Debug.Log("Right collision");
             playerController.SetAllowMove("right", value);
         }
         else if (transform.position.x == smallestX)
         { // left
-            Debug.Log("Left");
+            //Debug.Log("Left collision");
             playerController.SetAllowMove("left", value);
         }
     }
