@@ -64,7 +64,7 @@ public class Platform : MonoBehaviour
     }
 
     public void SnapPlayerToLocalGrid(GameObject player)
-    {
+    { // snap player to the local grid of the platform
         // find closest point
         Vector3 playerLocPos = player.transform.localPosition;
         float closestPoint = snapPositions[0];

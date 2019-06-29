@@ -8,6 +8,7 @@ public class Strip : MonoBehaviour
     public Strip[] nextStripBlacklist;
 
     [SerializeField]
+    [Tooltip("You probably want this to be different for every variation of a stripe. Same types won't differentiated between while pooling and blacklisting.")]
     private string type;
 
     public string GetStripType()
@@ -15,9 +16,9 @@ public class Strip : MonoBehaviour
         return type;
     }
 
-    // array of decorations
+    // array of decorations ?
 
-    // decoration generator
+    // decoration generator ?
 
-    // redecorator
+    // redecorator ?
 }

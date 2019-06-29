@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Level : MonoBehaviour
 {
-    public GameObject startingStrypeType;
+    public GameObject startingStripType;
     public GameObject[] stripsGallery;
     public int stripsArraySize = 40;
     public int stripPoolSize = 30;
@@ -14,6 +14,7 @@ public class Level : MonoBehaviour
     private GameObject[] stripsPool;
     private Camera mainCamera;
     private CameraController cameraController;
+    private float stripYOffset = -3f;
 
     private void Awake()
     {
@@ -25,15 +26,15 @@ public class Level : MonoBehaviour
 
             // first few are always the same
             if(i < 15)
-                nextStripType = startingStrypeType;
+                nextStripType = startingStripType;
             else
-                nextStripType = GenerateNextStrip(strips[i-1]);
+                nextStripType = ChooseNextStrip(strips[i-1]);
 
             // instantiate selected strip and add to array of strips
             strips[i] = GameObject.Instantiate(nextStripType, transform, false);
 
             // position the new strip
-            strips[i].transform.localPosition = new Vector3(0, -3 + nextStripType.transform.position.y, i);
+            strips[i].transform.localPosition = new Vector3(0, stripYOffset + nextStripType.transform.position.y, i);
         }
     }
 
@@ -73,8 +74,8 @@ public class Level : MonoBehaviour
 
     }
 
-    private GameObject GenerateNextStrip(GameObject previousStrip)
-    {
+    private GameObject ChooseNextStrip(GameObject previousStrip)
+    { // choose next strip to spawn taking in consideration previous strip
         // get strips that can't be spawned next
         Strip[] blacklist = previousStrip.GetComponent<Strip>().nextStripBlacklist;
 
@@ -137,7 +138,7 @@ public class Level : MonoBehaviour
         {
             GameObject nextStrip = null;   // next strip object
             // select random next strip type from refabs
-            GameObject nextStripType = GenerateNextStrip(strips[i-1]);
+            GameObject nextStripType = ChooseNextStrip(strips[i-1]);
             
             // check the pool
             for (int j = 0; j < stripsPool.Length; j++)
@@ -154,7 +155,7 @@ public class Level : MonoBehaviour
                 nextStrip = GameObject.Instantiate(nextStripType, transform, false);
 
             // set position of this new strip
-            nextStrip.transform.localPosition = new Vector3(0, -3 + nextStripType.transform.position.y, lastStripLocPos.z + newZOffset);
+            nextStrip.transform.localPosition = new Vector3(0, stripYOffset + nextStripType.transform.position.y, lastStripLocPos.z + newZOffset);
             // set reference to this new strip
             strips[i] = nextStrip;
 

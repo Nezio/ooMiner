@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlatformPlayerGrabber : MonoBehaviour
-{
+{ // grabs player when he jumps on the platform (parents player to the platform and some other stuff)
     private GameObject platform;    // platform should be parent of this object
     private Transform oldPlayerParent = null;
 

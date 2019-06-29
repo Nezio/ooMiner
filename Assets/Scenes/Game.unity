@@ -1555,6 +1555,50 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1035078064}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1214031396
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1214031397}
+  - component: {fileID: 1214031398}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1214031397
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1214031396}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 14.574244, y: 0.16385107, z: -1.9529277}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1214031398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1214031396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6623cf23780d37847a75df497da5e2f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds: []
 --- !u!1 &1569091842
 GameObject:
   m_ObjectHideFlags: 0
@@ -2038,7 +2082,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &2031575687
 AudioSource:
@@ -2165,13 +2209,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f705f9334ea1ba7459b3a20fc5f9224d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingStrypeType: {fileID: 4637843022776097577, guid: 17e9ab95b215f9f4b86e6ca2f809ba39,
+  startingStripType: {fileID: 4637843022776097577, guid: 17e9ab95b215f9f4b86e6ca2f809ba39,
     type: 3}
   stripsGallery:
   - {fileID: 4637843022776097577, guid: e587aeb9f9c216443afcb5968bb56e12, type: 3}
-  - {fileID: 4637843022776097577, guid: 17e9ab95b215f9f4b86e6ca2f809ba39, type: 3}
+  - {fileID: 4637843022776097577, guid: 65beadad81e0d4b489a643ac89a0f53b, type: 3}
   - {fileID: 4637843022776097577, guid: ee3b708654cce924aa79ebbd01fe5a52, type: 3}
-  - {fileID: 4637843022776097577, guid: 17e9ab95b215f9f4b86e6ca2f809ba39, type: 3}
   stripsArraySize: 40
   stripPoolSize: 30
   generateStripCount: 10

@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextStripBlacklist:
-  - {fileID: 3816563604757720175, guid: b9a66d3ffe15a0a4c8b42e8a03797e88, type: 3}
+  - {fileID: -7335804877840993259, guid: ee3b708654cce924aa79ebbd01fe5a52, type: 3}
   type: lava
 --- !u!1 &5724382824242505153
 GameObject:
