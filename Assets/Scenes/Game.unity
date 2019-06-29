@@ -416,7 +416,7 @@ BoxCollider:
   m_GameObject: {fileID: 140676266}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -2215,6 +2215,7 @@ MonoBehaviour:
   - {fileID: 4637843022776097577, guid: e587aeb9f9c216443afcb5968bb56e12, type: 3}
   - {fileID: 4637843022776097577, guid: 65beadad81e0d4b489a643ac89a0f53b, type: 3}
   - {fileID: 4637843022776097577, guid: ee3b708654cce924aa79ebbd01fe5a52, type: 3}
+  - {fileID: 4637843022776097577, guid: 17e9ab95b215f9f4b86e6ca2f809ba39, type: 3}
   stripsArraySize: 40
   stripPoolSize: 30
   generateStripCount: 10

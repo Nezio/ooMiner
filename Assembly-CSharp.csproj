@@ -66,6 +66,7 @@
     <Compile Include="Assets\Scripts\Audio\ButtonSounds.cs" />
     <Compile Include="Assets\Scripts\Audio\Music.cs" />
     <Compile Include="Assets\Scripts\Audio\Sound.cs" />
+    <Compile Include="Assets\Scripts\Block.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\EndRunOnCollide.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />

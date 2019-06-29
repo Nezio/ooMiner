@@ -106,20 +106,13 @@ public class Level : MonoBehaviour
         // note: n is number of strips to be generated; n = generateStripCount
 
         // reorder stripsPool array so that null values are at the front
-        Tools.BackfillArray(ref stripsPool);
+        Tools.Backfill(ref stripsPool);
 
         // if there are some non-null entries in the first n slots of stripsPool -> destroy those game objects
-        for(int i = 0; i < generateStripCount; i++)
-        {
-            if (stripsPool[i] != null)
-            {
-                GameObject.Destroy(stripsPool[i]);
-                //Debug.Log("destroyed");
-            }
-        }
+        Tools.DestroyFirstN(generateStripCount, ref stripsPool);
 
-        // shift stripsPool array by n slots back
-        Tools.ShiftArrayBackbyN(generateStripCount, ref stripsPool);
+        // shift stripsPool array by n slots back to fee up slots at the end for new entries
+        Tools.ShiftArrayBackByN(generateStripCount, ref stripsPool);
 
         // save first n strips to last n pooling array slots
         for(int i = 0; i < generateStripCount; i++)
@@ -129,7 +122,7 @@ public class Level : MonoBehaviour
 
 
         // shift strips array by n backwards
-        Tools.ShiftArrayBackbyN(generateStripCount, ref strips);
+        Tools.ShiftArrayBackByN(generateStripCount, ref strips);
 
         // fill last n slots of strips array by generating random strips; look at stripsPool to check if already exists
         Vector3 lastStripLocPos = strips[strips.Length - 1].transform.localPosition;
@@ -137,7 +130,7 @@ public class Level : MonoBehaviour
         for(int i = strips.Length-generateStripCount; i < strips.Length; i++)
         {
             GameObject nextStrip = null;   // next strip object
-            // select random next strip type from refabs
+            // select random next strip type from prefabs
             GameObject nextStripType = ChooseNextStrip(strips[i-1]);
             
             // check the pool
@@ -150,9 +143,22 @@ public class Level : MonoBehaviour
                     break;
                 }
             }
-            // in case there is no matching strip found in the pool
-            if(nextStrip == null)
+            
+            if (nextStrip == null)
+            { // in case there is no matching strip found in the pool
                 nextStrip = GameObject.Instantiate(nextStripType, transform, false);
+            }  
+            else
+            { // if there was a match in the pool
+                // redecorate strip if it can be redecorated
+                try
+                {
+                    nextStrip.GetComponent<StripDecorator>().RedecorateStrip();
+                }
+                catch { /* strip is not of the type that has decorations on itself; do nothing */ };
+                
+            }
+                
 
             // set position of this new strip
             nextStrip.transform.localPosition = new Vector3(0, stripYOffset + nextStripType.transform.position.y, lastStripLocPos.z + newZOffset);
