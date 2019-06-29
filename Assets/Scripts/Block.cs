@@ -7,6 +7,8 @@ public class Block : MonoBehaviour
     [SerializeField]
     private string type;
 
+    public bool collideWithPlayer = true;
+
     public string GetBlockType()
     {
         return type;

@@ -1,11 +1,16 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
     private Player player;
-
+    private bool allowMoveForward = true;
+    private bool allowMoveBack = true;
+    private bool allowMoveLeft = true;
+    private bool allowMoveRight = true;
+    
     private void Start()
     {
         player = gameObject.GetComponent<Player>();
@@ -14,7 +19,8 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         if(!player.IsFrozen())
-        { // if player isn't frozen 
+        { // only allow controls if player isn't frozen 
+
             // android controls ------------------------------------------------------
             Vector2 startPos = new Vector2(0, 0);
             Vector2 direction;
@@ -55,24 +61,74 @@ public class PlayerController : MonoBehaviour
             // windwos/editor controls ------------------------------------------------------
             if (Input.GetKeyDown(KeyCode.W))
             { // move forward
-                transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 1);
-                AudioManager.instance.PlayOneShot("PlayerJump");
+                MoveForward();
             }
             else if (Input.GetKeyDown(KeyCode.S))
             { // move backwards
-                transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - 1);
+                MoveBack();
             }
             else if (Input.GetKeyDown(KeyCode.A))
             { // move left
-                transform.position = new Vector3(transform.position.x - 1, transform.position.y, transform.position.z);
+                MoveLeft();
             }
             else if (Input.GetKeyDown(KeyCode.D))
             { // move right
-                transform.position = new Vector3(transform.position.x + 1, transform.position.y, transform.position.z);
+                MoveRight();
             }
         }
-        
+    }
 
+    private void MoveForward()
+    {
+        if(allowMoveForward)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 1);
+            AudioManager.instance.PlayOneShot("PlayerJump");
+        }
+    }
+    private void MoveBack()
+    {
+        if(allowMoveBack)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - 1);
+            AudioManager.instance.PlayOneShot("PlayerJump");
+        }
+    }
+    private void MoveLeft()
+    {
+        if(allowMoveLeft)
+        {
+            transform.position = new Vector3(transform.position.x - 1, transform.position.y, transform.position.z);
+            AudioManager.instance.PlayOneShot("PlayerJump");
+        }
+    }
+    private void MoveRight()
+    {
+        if(allowMoveRight)
+        {
+            transform.position = new Vector3(transform.position.x + 1, transform.position.y, transform.position.z);
+            AudioManager.instance.PlayOneShot("PlayerJump");
+        }
+    }
+
+    public void SetAllowMove(string direction, bool value)
+    {
+        if(direction.ToLower() == "forward")
+        {
+            allowMoveForward = value;
+        }
+        else if (direction.ToLower() == "back")
+        {
+            allowMoveBack = value;
+        }
+        else if (direction.ToLower() == "left")
+        {
+            allowMoveLeft = value;
+        }
+        else if (direction.ToLower() == "right")
+        {
+            allowMoveRight = value;
+        }
     }
 
 }

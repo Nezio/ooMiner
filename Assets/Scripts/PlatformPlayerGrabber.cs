@@ -53,8 +53,8 @@ public class PlatformPlayerGrabber : MonoBehaviour
             // return old player parent
             other.transform.parent = oldPlayerParent;
 
-
             // align player to the world grid
+            other.transform.position = new Vector3(Mathf.Round(other.transform.position.x), other.transform.position.y, Mathf.Round(other.transform.position.z));
         }
     }
 }
