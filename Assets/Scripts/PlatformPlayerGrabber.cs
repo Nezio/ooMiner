@@ -30,6 +30,7 @@ public class PlatformPlayerGrabber : MonoBehaviour
             // set player parent to this object or platform
             other.transform.parent = platform.transform;
 
+            /*
             // align player to the platform
             platform.GetComponent<Platform>().SnapPlayerToLocalGrid(other.gameObject);
 
@@ -37,6 +38,7 @@ public class PlatformPlayerGrabber : MonoBehaviour
             other.GetComponent<Player>().UnfreezePlayer();
             other.GetComponent<Rigidbody>().isKinematic = true;
             other.transform.eulerAngles = new Vector3(0, other.transform.eulerAngles.y, 0);
+            */
         }
         
     }

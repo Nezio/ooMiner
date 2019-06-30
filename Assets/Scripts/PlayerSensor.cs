@@ -67,7 +67,7 @@ public class PlayerSensor : MonoBehaviour
 
         if (transform.position.z == biggestZ)
         { // forward
-            //Debug.Log("Forward collision");
+            Debug.Log("Forward collision");
             playerController.SetAllowMove("forward", value);
         }
         else if (transform.position.z == smallestZ)
