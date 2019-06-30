@@ -53,7 +53,8 @@ public class StripDecorator : MonoBehaviour
                 GameObject newBlock = GameObject.Instantiate(nextBlockType, newPosition, Quaternion.identity);
 
                 // set parent of the block
-                newBlock.transform.parent = transform;
+                //newBlock.transform.parent = transform;
+                newBlock.transform.SetParent(transform);
 
                 // add the block to the list of blocks
                 blocks.Add(newBlock);
@@ -144,12 +145,13 @@ public class StripDecorator : MonoBehaviour
             else
             { // a match was found in the pool
                 // move to a new position
-                //nextBlock.transform.parent = null;    // uncomment if it doesnt move propperly while it has a parent
+                //nextBlock.transform.SetParent(null);    // uncomment if it doesnt move propperly while it has a parent
                 nextBlock.transform.position = newPosition;
             }
-            
+
             // set parent of the block
-            nextBlock.transform.parent = transform;
+            //nextBlock.transform.parent = transform;
+            nextBlock.transform.SetParent(transform);
 
             // set reference to this new strip
             blocks[i] = nextBlock;            

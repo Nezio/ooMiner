@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public float speed = 10f;
+    public float moveSpeed = 10f;
+    public float fallSpeed = 10f;
     
     
     private bool playerSafe = false;
     private bool frozenControls = false;
     private bool playerMoving = false;
     private Vector3 scale;  // used to reset player scale back in case it changes (happens during lerp in local space, when player moves while on a platform)
+    private bool falling = false;
 
     private void Start()
     {
@@ -44,7 +46,6 @@ public class Player : MonoBehaviour
     {
         return frozenControls;
     }
-
     // player movement
     public void SetPlayerMoving(bool value)
     {
@@ -53,6 +54,15 @@ public class Player : MonoBehaviour
     public bool IsMoving()
     {
         return playerMoving;
+    }
+    // player falling
+    public void SetPlayerFalling(bool value)
+    {
+        falling = value;
+    }
+    public bool IsFalling()
+    {
+        return falling;
     }
 
     public IEnumerator AlignToWorldGrid()
@@ -86,5 +96,21 @@ public class Player : MonoBehaviour
     public Vector3 GetScale()
     {
         return scale;
+    }
+
+    /// <param name="speed">Set speed at 0 or less to use default player fallSpeed value.</param>
+    public IEnumerator MakePlayerFall(float speed)
+    { // leave speed at 0 for default value
+        if(speed <= 0)
+        {
+            speed = fallSpeed;
+        }
+
+        while(true)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y - speed * Time.deltaTime, transform.position.z);
+
+            yield return new WaitForEndOfFrame();
+        }
     }
 }

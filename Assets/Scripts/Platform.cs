@@ -10,12 +10,15 @@ public class Platform : MonoBehaviour
 
     private Animator animator;
     private List<float> snapPositions;  // positions to which player can snap to upon jumping onto the platform
+    private GameObject player;
+    private Player playerScript;
 
     private void Start()
     {
-        animator = gameObject.GetComponent<Animator>();
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerScript = player.GetComponent<Player>();
 
-        //speed = 5f;
+        animator = gameObject.GetComponent<Animator>();
 
         // set animation speed
         animator.SetFloat("Speed", speed);
@@ -24,6 +27,27 @@ public class Platform : MonoBehaviour
         animator.Play("Platform", 0, Random.Range(0f ,1f));
 
         CalculateSnapPositions();
+
+        // debug
+        Debug.Log(snapPositions.Count);
+    }
+
+    private void Update()
+    {
+        // if player somehow ended up in the wrong position, snap back
+        // should be if player is on this platform
+        bool playerFoundOnThisPlatform = false;
+        foreach(Transform child in transform)
+        {
+            if(child.tag == "Player")
+                playerFoundOnThisPlatform = true;
+        }
+        if(playerFoundOnThisPlatform && !playerScript.IsMoving() && !playerScript.IsFalling())
+        {
+            bool contains = snapPositions.Contains(player.transform.localPosition.x);
+            if(!contains)
+                SnapPlayerToLocalGrid(player);
+        }
     }
 
     private void CalculateSnapPositions()

@@ -17,7 +17,7 @@ public class PlatformPlayerGrabber : MonoBehaviour
         if(other.tag == "Player")
         { // player entered the platform
             // don't do anything if player is falling to an end game
-            if (!other.GetComponent<Rigidbody>().isKinematic)
+            if (other.GetComponent<Player>().IsFalling())
                 return;
 
             //Debug.Log("grabbing player");
@@ -54,7 +54,6 @@ public class PlatformPlayerGrabber : MonoBehaviour
             other.GetComponent<Player>().MakePlayerUnsafe();
 
             // return old player parent
-            //other.transform.parent = oldPlayerParent;
             other.transform.SetParent(oldPlayerParent);
 
             // align player to the world grid
