@@ -845,6 +845,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 470789390}
     m_Modifications:
+    - target: {fileID: 6575988679544384495, guid: 7c8fcfdf2f706b845af64daac45d96b8,
+        type: 3}
+      propertyPath: side
+      value: back
+      objectReference: {fileID: 0}
     - target: {fileID: 5995649248169024771, guid: 7c8fcfdf2f706b845af64daac45d96b8,
         type: 3}
       propertyPath: m_Name
@@ -926,6 +931,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 470789390}
+  - component: {fileID: 470789391}
   m_Layer: 0
   m_Name: Sensors
   m_TagString: Untagged
@@ -951,6 +957,18 @@ Transform:
   m_Father: {fileID: 1168416705}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &470789391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 470789389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e006c342894d26540b14818931d472ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &578733227
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1139,6 +1157,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 470789390}
     m_Modifications:
+    - target: {fileID: 6575988679544384495, guid: 7c8fcfdf2f706b845af64daac45d96b8,
+        type: 3}
+      propertyPath: side
+      value: left
+      objectReference: {fileID: 0}
     - target: {fileID: 5995649248169024771, guid: 7c8fcfdf2f706b845af64daac45d96b8,
         type: 3}
       propertyPath: m_Name
@@ -2097,8 +2120,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13c40c6f4934f7342acc39c0fce901f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftBoundary: -5
-  rightBoundary: 3
+  leftBoundary: -4
+  rightBoundary: 4
 --- !u!114 &1168416707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2204,10 +2227,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 470789390}
     m_Modifications:
+    - target: {fileID: 6575988679544384495, guid: 7c8fcfdf2f706b845af64daac45d96b8,
+        type: 3}
+      propertyPath: side
+      value: front
+      objectReference: {fileID: 0}
     - target: {fileID: 5995649248169024771, guid: 7c8fcfdf2f706b845af64daac45d96b8,
         type: 3}
       propertyPath: m_Name
-      value: PlayerSensor_Forward
+      value: PlayerSensor_Front
       objectReference: {fileID: 0}
     - target: {fileID: 3074545809318884135, guid: 7c8fcfdf2f706b845af64daac45d96b8,
         type: 3}
@@ -2288,6 +2316,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 470789390}
     m_Modifications:
+    - target: {fileID: 6575988679544384495, guid: 7c8fcfdf2f706b845af64daac45d96b8,
+        type: 3}
+      propertyPath: side
+      value: right
+      objectReference: {fileID: 0}
     - target: {fileID: 5995649248169024771, guid: 7c8fcfdf2f706b845af64daac45d96b8,
         type: 3}
       propertyPath: m_Name

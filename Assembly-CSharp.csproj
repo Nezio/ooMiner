@@ -68,6 +68,7 @@
     <Compile Include="Assets\Scripts\Audio\Sound.cs" />
     <Compile Include="Assets\Scripts\Block.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
+    <Compile Include="Assets\Scripts\ChildDontRotateWithParent.cs" />
     <Compile Include="Assets\Scripts\CollideWithPlayer.cs" />
     <Compile Include="Assets\Scripts\EndRunOnCollide.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
@@ -80,6 +81,7 @@
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\PlayerSensor.cs" />
+    <Compile Include="Assets\Scripts\PlayerSensor_OLD.cs" />
     <Compile Include="Assets\Scripts\Strip.cs" />
     <Compile Include="Assets\Scripts\StripDecorator.cs" />
     <Compile Include="Assets\Scripts\Tools.cs" />

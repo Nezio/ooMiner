@@ -13,7 +13,11 @@ public class PlayerController : MonoBehaviour
     private bool allowMoveBack = true;
     private bool allowMoveLeft = true;
     private bool allowMoveRight = true;
-    
+
+    private bool playerOnLeftBound = false;
+    private bool playerOnRightBound = false;
+
+
     private void Start()
     {
         player = gameObject.GetComponent<Player>();
@@ -79,6 +83,23 @@ public class PlayerController : MonoBehaviour
                 MoveRight();
             }
         }
+
+        
+        // doesn't work well with current implementation of player-block collision; to use this approach two more variables would be needed:
+        // playerOnLeftBound and playerOnRightBound that would be set here instead of allowMove variables
+
+        // still in update; check if player reached level bounds
+        if (player.transform.position.x <= leftBoundary)
+            playerOnLeftBound = true;
+        else
+            playerOnLeftBound = false;
+
+        if (player.transform.position.x >= rightBoundary)
+            playerOnRightBound = true;
+        else
+            playerOnRightBound = false;
+        
+
     }
 
     private void MoveForward()
@@ -86,14 +107,15 @@ public class PlayerController : MonoBehaviour
         if(allowMoveForward)
         {
             //transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 1); // depricated
-            AudioManager.instance.PlayOneShot("PlayerJump");
-
+            
             // rotate to face forward
             player.transform.LookAt(new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z + 10));
-
             // move forward
             Vector3 destination = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z + 1);
             StartCoroutine(MovePlayerToPosition(destination, player.speed));
+
+            // play sound
+            AudioManager.instance.PlayOneShot("PlayerJump");
         }
     }
     private void MoveBack()
@@ -101,61 +123,75 @@ public class PlayerController : MonoBehaviour
         if(allowMoveBack)
         {
             //transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - 1); // depricated
-            AudioManager.instance.PlayOneShot("PlayerJump");
 
             // rotate to face back
             player.transform.LookAt(new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z - 10));
-
             // move back
             Vector3 destination = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z - 1);
             StartCoroutine(MovePlayerToPosition(destination, player.speed));
+
+            // play sound
+            AudioManager.instance.PlayOneShot("PlayerJump");
         }
     }
     private void MoveLeft()
     {
-        if(allowMoveLeft)
+        if(allowMoveLeft && !playerOnLeftBound)
         {
             //transform.position = new Vector3(transform.position.x - 1, transform.position.y, transform.position.z); // depricated
-            AudioManager.instance.PlayOneShot("PlayerJump");
-
-            // if player is on left boundary prevent further movement to the left
-            if (player.transform.position.x <= leftBoundary)
-                allowMoveLeft = false;
-            // if player is not on right boundary allow movement to the right
-            if (player.transform.position.x < rightBoundary)
-                allowMoveRight = true;
 
             // rotate to face left
             player.transform.LookAt(new Vector3(player.transform.position.x - 10, player.transform.position.y, player.transform.position.z));
-
             // move left
             Vector3 destination = new Vector3(player.transform.position.x - 1, player.transform.position.y, player.transform.position.z);
             StartCoroutine(MovePlayerToPosition(destination, player.speed));
+            
+            // play sound
+            AudioManager.instance.PlayOneShot("PlayerJump");
+
+            // if player is on left boundary prevent further movement to the left (NOTE: at this point player is not in the new position yet because of the smooth movement, so use destination instead)
+            //CheckLeftBound(destination);
         }
     }
     private void MoveRight()
     {
-        if(allowMoveRight)
+        if(allowMoveRight && !playerOnRightBound)
         {
             //transform.position = new Vector3(transform.position.x + 1, transform.position.y, transform.position.z); // depricated
-           
-            AudioManager.instance.PlayOneShot("PlayerJump");
-
-            // if player is not on left boundary allow movement to the left
-            if (player.transform.position.x > leftBoundary)
-                allowMoveLeft = true;
-            // if player is on right boundary prevent further movement to the right
-            if (player.transform.position.x >= rightBoundary)
-                allowMoveRight = false;
 
             // rotate to face right
             player.transform.LookAt(new Vector3(player.transform.position.x + 10, player.transform.position.y, player.transform.position.z));
-
             // move right
             Vector3 destination = new Vector3(player.transform.position.x + 1, player.transform.position.y, player.transform.position.z);
             StartCoroutine(MovePlayerToPosition(destination, player.speed));
+
+            // play sound
+            AudioManager.instance.PlayOneShot("PlayerJump");
+
+            // if player is on right boundary prevent further movement to the right (NOTE: at this point player is not in the new position yet because of the smooth movement, so use destination instead)
+            //CheckRightBound(destination);
         }
     }
+
+    public void CheckLeftBound(Vector3 playerPosition)
+    {
+        // if player is on left boundary prevent further movement to the left
+        if (playerPosition.x <= leftBoundary)
+            allowMoveLeft = false;
+        // if player is not on right boundary anymore allow movement to the right
+        if (playerPosition.x < rightBoundary)
+            allowMoveRight = true;
+    }
+    public void CheckRightBound(Vector3 playerPosition)
+    {
+        // if player is on right boundary prevent further movement to the right
+        if (playerPosition.x >= rightBoundary)
+            allowMoveRight = false;
+        // if player is not on left boundary anymore allow movement to the left
+        if (playerPosition.x > leftBoundary)
+            allowMoveLeft = true;
+    }
+
 
     public void SetAllowMove(string direction, bool value)
     {
