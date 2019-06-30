@@ -32,7 +32,7 @@ public class MakePlayerFallOnCollide : MonoBehaviour
             playerCollider.gameObject.GetComponent<Rigidbody>().isKinematic = false;
 
             // freeze player controls
-            playerCollider.GetComponent<Player>().FreezePlayer();
+            playerCollider.GetComponent<Player>().FreezePlayerControls();
         }
 
 

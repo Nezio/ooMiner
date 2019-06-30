@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if(!player.IsFrozen())
+        if(!player.ControlsFrozen())
         { // only allow controls if player isn't frozen 
 
             // android controls ------------------------------------------------------
@@ -217,7 +217,148 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 startPosition = player.transform.position;
 
-        player.FreezePlayer();
+        player.FreezePlayerControls();
+        player.SetPlayerMoving(true);
+
+        float t = 0f;
+        while (t < 1f)
+        {
+            t = t + Time.deltaTime * speed;
+            Vector3 newPosition = Vector3.Lerp(startPosition, destination, t);
+            player.transform.position = newPosition;
+
+            /* this is to prevent player scale change while lerping in local space; ideally player should not use world space to lerp 
+             * while in local space as this could cause the player to move at the same speed as the platform beneath and never acctually move
+             * relative to the platform. However this inmplementation gives satisfying results for now. */
+            // unparent
+            Transform oldParent = player.transform.parent;
+            player.transform.SetParent(null);
+            player.transform.localScale = player.GetScale();
+            // parent back
+            player.transform.SetParent(oldParent);
+            //Debug.Log(player.transform.localScale);
+            //Debug.Log(player.transform.lossyScale);
+            
+            yield return new WaitForEndOfFrame();
+        } // movement ended
+
+        player.UnfreezePlayerControls();
+        player.SetPlayerMoving(false);
+
+
+        if(player.IsOnPlatform())
+        {
+            // align player to the platform
+            transform.parent.gameObject.GetComponent<Platform>().SnapPlayerToLocalGrid(gameObject);
+            // enable player controlls, disable fall and reset player rotation(just in case)
+            gameObject.GetComponent<Rigidbody>().isKinematic = true;
+            player.transform.eulerAngles = new Vector3(0, player.transform.eulerAngles.y, 0);
+        }
+
+        yield return null;
+    }
+
+    /*
+    // different code for player on platform and not (may have a problem whil leaving the platform) 
+    private IEnumerator MovePlayerToPosition(Vector3 destination, float speed)
+    {
+        player.FreezePlayerControls();
+        player.SetPlayerMoving(true);
+
+        // if player is already on a platform at the start of the move
+        
+        if (player.IsOnPlatform())
+        { // if player is standing on a platform
+          // move using local scale
+
+        }
+        else
+        { // player is not on a platform, move using world scale
+            Vector3 startPosition = player.transform.position;
+
+            float t = 0f;
+            while (t < 1f)
+            {
+                t = t + Time.deltaTime * speed;
+                Vector3 newPosition = Vector3.Lerp(startPosition, destination, t);
+                player.transform.position = newPosition;
+                //Debug.Log(player.transform.localScale);
+                //Debug.Log(player.transform.lossyScale);
+                yield return new WaitForEndOfFrame();
+            } // movement ended
+
+            // if player is on a platform after move ended
+            if (player.IsOnPlatform())
+            {
+              // align player to the platform
+                transform.parent.gameObject.GetComponent<Platform>().SnapPlayerToLocalGrid(gameObject);
+                // disable fall and reset player rotation(just in case)
+                gameObject.GetComponent<Rigidbody>().isKinematic = true;
+                player.transform.eulerAngles = new Vector3(0, player.transform.eulerAngles.y, 0);
+            }
+        }
+        
+
+        player.UnfreezePlayerControls();
+        player.SetPlayerMoving(false);
+        
+        yield return null;
+    }*/
+
+    /*
+    // useing local position
+    private IEnumerator MovePlayerToPosition(Vector3 destination, float speed)
+    {
+        Vector3 startPosition = player.transform.localPosition;
+
+        player.FreezePlayerControls();
+        player.SetPlayerMoving(true);
+
+        float t = 0f;
+        while (t < 1f)
+        {
+            t = t + Time.deltaTime * speed;
+            Vector3 newPosition = Vector3.Lerp(startPosition, destination, t);
+            player.transform.position = newPosition;
+            //Debug.Log(player.transform.localScale);
+            Debug.Log(player.transform.lossyScale);
+            yield return new WaitForEndOfFrame();
+        } // movement ended
+
+        player.UnfreezePlayerControls();
+        player.SetPlayerMoving(false);
+
+
+        // if player is now on a platform
+        Platform platform = null;
+        try
+        { // try to get platform script from parent of player (only happens if player is on a platform)
+            platform = transform.parent.gameObject.GetComponent<Platform>();
+        }
+        catch { }
+        if (platform != null)
+        { // if player is standing on a platform
+          // align player to the platform
+            transform.parent.gameObject.GetComponent<Platform>().SnapPlayerToLocalGrid(gameObject);
+            // enable player controlls, disable fall and reset player rotation(just in case)
+            gameObject.GetComponent<Rigidbody>().isKinematic = true;
+            player.transform.eulerAngles = new Vector3(0, player.transform.eulerAngles.y, 0);
+        }
+
+
+        yield return null;
+    }
+    */
+
+
+    /*
+    //backup OG
+    private IEnumerator MovePlayerToPosition(Vector3 destination, float speed)
+    {
+        Vector3 startPosition = player.transform.position;
+
+        player.FreezePlayerControls();
+        player.SetPlayerMoving(true);
 
         float t = 0f;
         while(t < 1f)
@@ -225,12 +366,16 @@ public class PlayerController : MonoBehaviour
             t = t + Time.deltaTime * speed;
             Vector3 newPosition = Vector3.Lerp(startPosition, destination, t);
             player.transform.position = newPosition;
+            //Debug.Log(player.transform.localScale);
+            Debug.Log(player.transform.lossyScale);
             yield return new WaitForEndOfFrame();
-        }
+        } // movement ended
 
-        player.UnfreezePlayer();
+        player.UnfreezePlayerControls();
+        player.SetPlayerMoving(false);
 
-        //if platform
+
+        // if player is now on a platform
         Platform platform = null;
         try
         { // try to get platform script from parent of player (only happens if player is on a platform)
@@ -249,5 +394,6 @@ public class PlayerController : MonoBehaviour
         
         yield return null;
     }
+    */
 
 }

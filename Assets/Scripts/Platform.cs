@@ -58,7 +58,7 @@ public class Platform : MonoBehaviour
         /*for(int i = 0; i < snapPositions.Count; i++)
         {
             GameObject cubeInstance = GameObject.Instantiate(debugCube);
-            cubeInstance.transform.parent = transform;
+            cubeInstance.transform.SetParent(transform);
             cubeInstance.transform.localPosition = new Vector3(snapPositions[i], 1, 0);
         }*/
     }

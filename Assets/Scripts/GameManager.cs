@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     public void Pause()
     {
         // freeze player
-        player.FreezePlayer();
+        player.FreezePlayerControls();
 
         // set timescale
         Time.timeScale = 0f;
@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
     public void Resume()
     {
         // unfreeze player
-        player.UnfreezePlayer();
+        player.UnfreezePlayerControls();
 
         // set timescale
         Time.timeScale = 1f;
@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour
         player.GetComponent<Rigidbody>().isKinematic = false;
 
         // freeze player controls
-        player.FreezePlayer();
+        player.FreezePlayerControls();
 
         // set timescale
         Time.timeScale = 0f;

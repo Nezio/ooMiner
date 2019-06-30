@@ -28,7 +28,8 @@ public class PlatformPlayerGrabber : MonoBehaviour
             // save old player parent
             oldPlayerParent = other.transform.parent;
             // set player parent to this object or platform
-            other.transform.parent = platform.transform;
+            //other.transform.parent = platform.transform;
+            other.transform.SetParent(platform.transform);
 
             /*
             // align player to the platform
@@ -53,10 +54,12 @@ public class PlatformPlayerGrabber : MonoBehaviour
             other.GetComponent<Player>().MakePlayerUnsafe();
 
             // return old player parent
-            other.transform.parent = oldPlayerParent;
+            //other.transform.parent = oldPlayerParent;
+            other.transform.SetParent(oldPlayerParent);
 
             // align player to the world grid
-            other.transform.position = new Vector3(Mathf.Round(other.transform.position.x), other.transform.position.y, Mathf.Round(other.transform.position.z));
+            //other.transform.position = new Vector3(Mathf.Round(other.transform.position.x), other.transform.position.y, Mathf.Round(other.transform.position.z));
+            StartCoroutine(other.GetComponent<Player>().AlignToWorldGrid());
         }
     }
 }
