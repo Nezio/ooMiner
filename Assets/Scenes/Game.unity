@@ -1721,7 +1721,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b92a07b6b9ac8647bf8245ecdf9097c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraSpeed: 0
+  cameraSpeed: 1
   cameraBackwardsViewDistance: 5
 --- !u!1 &999726184
 GameObject:
