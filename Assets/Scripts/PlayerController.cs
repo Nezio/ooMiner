@@ -8,9 +8,10 @@ public class PlayerController : MonoBehaviour
 {
     public int leftBoundary = -4;
     public int rightBoundary = 4;
+    public GameManager gameManager;
 
     private Player player;
-    public Animator playerAnimator;
+    private Animator playerAnimator;
     private bool allowMoveForward = true;
     private bool allowMoveBack = true;
     private bool allowMoveLeft = true;
@@ -18,6 +19,8 @@ public class PlayerController : MonoBehaviour
 
     private bool playerOnLeftBound = false;
     private bool playerOnRightBound = false;
+
+    private bool firstPlayerMove = true;
 
 
     private void Start()
@@ -30,8 +33,6 @@ public class PlayerController : MonoBehaviour
     {
         if(!player.ControlsFrozen())
         { // only allow controls if player isn't frozen 
-
-            Debug.Log("frozen: " + player.ControlsFrozen());
 
             // android controls ------------------------------------------------------
 
@@ -129,6 +130,8 @@ public class PlayerController : MonoBehaviour
     {
         if(allowMoveForward)
         {
+            OnPlayerMoved();
+
             //transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 1); // depricated
             
             // rotate to face forward
@@ -136,9 +139,6 @@ public class PlayerController : MonoBehaviour
             // move forward
             Vector3 destination = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z + 1);
             StartCoroutine(MovePlayerToPosition(destination, player.moveSpeed));
-
-            // play sound
-            AudioManager.instance.PlayOneShot("PlayerJump");
 
             // increment score
             player.AddValueToScore(1);
@@ -148,6 +148,8 @@ public class PlayerController : MonoBehaviour
     {
         if(allowMoveBack)
         {
+            OnPlayerMoved();
+
             //transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - 1); // depricated
 
             // rotate to face back
@@ -156,8 +158,6 @@ public class PlayerController : MonoBehaviour
             Vector3 destination = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z - 1);
             StartCoroutine(MovePlayerToPosition(destination, player.moveSpeed));
 
-            // play sound
-            AudioManager.instance.PlayOneShot("PlayerJump");
 
             // decrement score
             player.AddValueToScore(-1);
@@ -167,6 +167,8 @@ public class PlayerController : MonoBehaviour
     {
         if(allowMoveLeft && !playerOnLeftBound)
         {
+            OnPlayerMoved();
+
             //transform.position = new Vector3(transform.position.x - 1, transform.position.y, transform.position.z); // depricated
 
             // rotate to face left
@@ -175,8 +177,6 @@ public class PlayerController : MonoBehaviour
             Vector3 destination = new Vector3(player.transform.position.x - 1, player.transform.position.y, player.transform.position.z);
             StartCoroutine(MovePlayerToPosition(destination, player.moveSpeed));
             
-            // play sound
-            AudioManager.instance.PlayOneShot("PlayerJump");
 
             // if player is on left boundary prevent further movement to the left (NOTE: at this point player is not in the new position yet because of the smooth movement, so use destination instead)
             //CheckLeftBound(destination);  // this is now done in this script's update
@@ -186,6 +186,8 @@ public class PlayerController : MonoBehaviour
     {
         if(allowMoveRight && !playerOnRightBound)
         {
+            OnPlayerMoved();
+
             //transform.position = new Vector3(transform.position.x + 1, transform.position.y, transform.position.z); // depricated
 
             // rotate to face right
@@ -193,14 +195,25 @@ public class PlayerController : MonoBehaviour
             // move right
             Vector3 destination = new Vector3(player.transform.position.x + 1, player.transform.position.y, player.transform.position.z);
             StartCoroutine(MovePlayerToPosition(destination, player.moveSpeed));
-
-            // play sound
-            AudioManager.instance.PlayOneShot("PlayerJump");
-
+            
             // if player is on right boundary prevent further movement to the right (NOTE: at this point player is not in the new position yet because of the smooth movement, so use destination instead)
             //CheckRightBound(destination); // this is now done in this script's update
         }
     }
+    private void OnPlayerMoved()
+    { // player has moved in some direction; use this function for direction independent code
+      // play sound
+        AudioManager.instance.PlayOneShot("PlayerJump");
+
+        // on first player move
+        if (firstPlayerMove)
+        {
+            firstPlayerMove = false;
+
+            OnPlayerFirstMove();
+        }
+    }
+
 
     public void CheckLeftBound(Vector3 playerPosition)
     {
@@ -296,5 +309,15 @@ public class PlayerController : MonoBehaviour
         yield return null;
     }
     
+   
+
+    private void OnPlayerFirstMove()
+    { // only call this when player starts moving for the first time in a run
+        //Debug.Log("I can walk!");
+
+        // start the run
+        gameManager.StartRun();
+
+    }
 
 }

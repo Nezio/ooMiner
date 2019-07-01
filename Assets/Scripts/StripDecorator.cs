@@ -153,8 +153,12 @@ public class StripDecorator : MonoBehaviour
             //nextBlock.transform.parent = transform;
             nextBlock.transform.SetParent(transform);
 
-            // set reference to this new strip
-            blocks[i] = nextBlock;            
+            // set reference to this new block
+            blocks[i] = nextBlock;
+
+            // in case block is disabled (happens with coins and other collectibles) enable it
+            if (!blocks[i].activeInHierarchy)
+                blocks[i].SetActive(true);
         }
         
     }

@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     public float moveSpeed = 10f;
     public float fallSpeed = 10f;
     [Tooltip("Where do you want player score to be displayed")]
-    public Text scoreText;
+    public GameManager gameManager;
 
     private bool playerSafe = false;
     private bool frozenControls = false;
@@ -132,7 +132,7 @@ public class Player : MonoBehaviour
             runHighscore = score;
 
         // update score UI text
-        scoreText.text = runHighscore.ToString();
+        gameManager.UpdateScoreTextUI();
     }
     public int GetRunHighscore()
     {

@@ -22,8 +22,6 @@ public class MakePlayerFallOnCollide : MonoBehaviour
 
                     // freeze player controls
                     other.GetComponent<Player>().FreezePlayerControls();
-
-                    Debug.Log("collider: freeze player controls");
                 }
 
                 StartCoroutine(other.GetComponent<Player>().MakePlayerFall(-1));

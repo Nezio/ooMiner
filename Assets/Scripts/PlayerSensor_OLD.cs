@@ -27,7 +27,7 @@ public class PlayerSensor_OLD : MonoBehaviour
         }
         catch { }
 
-        if (block != null && block.collideWithPlayer)
+        if (block != null /*&& block.collideWithPlayer*/)
         { // if other is a block and player can collide with it
             SetAllowPlayerMovement(true);
 
@@ -46,7 +46,7 @@ public class PlayerSensor_OLD : MonoBehaviour
         }
         catch { }
 
-        if (block != null && block.collideWithPlayer)
+        if (block != null /*&& block.collideWithPlayer*/)
         { // if other is a block and player can collide with it
             SetAllowPlayerMovement(false);
         }

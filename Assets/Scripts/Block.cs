@@ -7,10 +7,13 @@ public class Block : MonoBehaviour
     [SerializeField]
     private string type;
 
-    public bool collideWithPlayer = true;
+    // spawn chance here
+
+    // public bool collideWithPlayer = true; // DEPRICATED; if you want a block to block the player attach CollideWithPlayer script instead
 
     public string GetBlockType()
     {
         return type;
     }
+
 }

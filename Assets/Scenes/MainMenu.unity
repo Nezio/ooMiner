@@ -347,12 +347,12 @@ PrefabInstance:
     - target: {fileID: 4177198669921246873, guid: 2c6050f22c21ac6448949e8a51f4ec27,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: 
+      value: LoadScene
       objectReference: {fileID: 0}
     - target: {fileID: 4177198669921246873, guid: 2c6050f22c21ac6448949e8a51f4ec27,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4177198669921246873, guid: 2c6050f22c21ac6448949e8a51f4ec27,
         type: 3}
@@ -362,7 +362,7 @@ PrefabInstance:
     - target: {fileID: 4177198669921246873, guid: 2c6050f22c21ac6448949e8a51f4ec27,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Game
+      value: OptionsMenu
       objectReference: {fileID: 0}
     - target: {fileID: 4177198668113834423, guid: 2c6050f22c21ac6448949e8a51f4ec27,
         type: 3}
@@ -620,6 +620,12 @@ MonoBehaviour:
   - source: {fileID: 0}
     name: EndRun
     clip: {fileID: 8300000, guid: 83a5fca8fe2998c4fa92a12bc9026916, type: 3}
+    volume: 0.8
+    pitch: 1
+    loop: 0
+  - source: {fileID: 0}
+    name: Coin
+    clip: {fileID: 8300000, guid: 6acf70ebb5757904cb7e4ea996f8e3f5, type: 3}
     volume: 0.8
     pitch: 1
     loop: 0
