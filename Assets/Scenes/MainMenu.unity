@@ -614,13 +614,13 @@ MonoBehaviour:
   - source: {fileID: 0}
     name: PlayerJump
     clip: {fileID: 8300000, guid: 8828c8248bb7ce94c9f83a2ad590adb7, type: 3}
-    volume: 0.8
+    volume: 1
     pitch: 1
     loop: 0
   - source: {fileID: 0}
     name: EndRun
     clip: {fileID: 8300000, guid: 83a5fca8fe2998c4fa92a12bc9026916, type: 3}
-    volume: 0.8
+    volume: 1
     pitch: 1
     loop: 0
   - source: {fileID: 0}
