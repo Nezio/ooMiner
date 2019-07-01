@@ -82,8 +82,10 @@
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\PlayerSensor.cs" />
     <Compile Include="Assets\Scripts\PlayerSensor_OLD.cs" />
+    <Compile Include="Assets\Scripts\SoundButtonImageUpdater.cs" />
     <Compile Include="Assets\Scripts\Strip.cs" />
     <Compile Include="Assets\Scripts\StripDecorator.cs" />
+    <Compile Include="Assets\Scripts\SwipeInput.cs" />
     <Compile Include="Assets\Scripts\Tools.cs" />
     <Compile Include="Assets\Scripts\UIEventHandler.cs" />
     <Reference Include="Unity.Timeline.Editor">

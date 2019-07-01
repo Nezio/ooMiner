@@ -840,42 +840,42 @@ PrefabInstance:
     - target: {fileID: 4177198669921246874, guid: 2c6050f22c21ac6448949e8a51f4ec27,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 254
+      value: -80
       objectReference: {fileID: 0}
     - target: {fileID: 4177198669921246874, guid: 2c6050f22c21ac6448949e8a51f4ec27,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 585
+      value: -80
       objectReference: {fileID: 0}
     - target: {fileID: 4177198669921246874, guid: 2c6050f22c21ac6448949e8a51f4ec27,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 149
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4177198669921246874, guid: 2c6050f22c21ac6448949e8a51f4ec27,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 84.7
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4177198669921246874, guid: 2c6050f22c21ac6448949e8a51f4ec27,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4177198669921246874, guid: 2c6050f22c21ac6448949e8a51f4ec27,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4177198669921246874, guid: 2c6050f22c21ac6448949e8a51f4ec27,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4177198669921246874, guid: 2c6050f22c21ac6448949e8a51f4ec27,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4177198669921246874, guid: 2c6050f22c21ac6448949e8a51f4ec27,
         type: 3}
@@ -895,7 +895,7 @@ PrefabInstance:
     - target: {fileID: 4177198669921246873, guid: 2c6050f22c21ac6448949e8a51f4ec27,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ExitGame
+      value: SoundButtonToggle
       objectReference: {fileID: 0}
     - target: {fileID: 4177198669921246873, guid: 2c6050f22c21ac6448949e8a51f4ec27,
         type: 3}
@@ -915,7 +915,28 @@ PrefabInstance:
     - target: {fileID: 4177198668113834423, guid: 2c6050f22c21ac6448949e8a51f4ec27,
         type: 3}
       propertyPath: m_Text
-      value: Sound
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4177198669921246872, guid: 2c6050f22c21ac6448949e8a51f4ec27,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c5b4acbc907e6b147be475acee2e1131,
+        type: 3}
+    - target: {fileID: 4177198669921246872, guid: 2c6050f22c21ac6448949e8a51f4ec27,
+        type: 3}
+      propertyPath: m_Type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4177198669921246872, guid: 2c6050f22c21ac6448949e8a51f4ec27,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4177198669921246872, guid: 2c6050f22c21ac6448949e8a51f4ec27,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c6050f22c21ac6448949e8a51f4ec27, type: 3}
@@ -925,6 +946,26 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1564543588}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1725138245 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4177198669921246875, guid: 2c6050f22c21ac6448949e8a51f4ec27,
+    type: 3}
+  m_PrefabInstance: {fileID: 1564543588}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1725138246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1725138245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fc5f767247e7a0409cc132ecc9a68f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicOnImage: {fileID: 21300000, guid: c5b4acbc907e6b147be475acee2e1131, type: 3}
+  musicOffImage: {fileID: 21300000, guid: 73d8f5519488227449cb8f6e5028867a, type: 3}
 --- !u!1 &1840792351
 GameObject:
   m_ObjectHideFlags: 0

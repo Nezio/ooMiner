@@ -29,16 +29,15 @@ public class Platform : MonoBehaviour
         CalculateSnapPositions();
 
         // debug
-        Debug.Log(snapPositions.Count);
+        //Debug.Log(transform.parent.gameObject.name + ": platform length is " + snapPositions.Count);
     }
 
     private void Update()
     {
         // if player somehow ended up in the wrong position, snap back
-        // should be if player is on this platform
         bool playerFoundOnThisPlatform = false;
         foreach(Transform child in transform)
-        {
+        { // only if player is on this platform
             if(child.tag == "Player")
                 playerFoundOnThisPlatform = true;
         }

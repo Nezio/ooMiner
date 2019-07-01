@@ -31,4 +31,33 @@ public class UIEventHandler : MonoBehaviour
         }
     }
 
+    public void SoundButtonToggle()
+    {
+        if(AudioListener.pause)
+        {
+            UnmuteSound();
+
+        }
+        else
+        {
+            MuteSound();
+        }
+    }
+
+    public void MuteSound()
+    {
+        AudioListener.pause = true;
+
+        GameObject clickedButton = EventSystem.current.currentSelectedGameObject;
+        clickedButton.GetComponent<SoundButtonImageUpdater>().SetMusicOffImage();
+    }
+
+    public void UnmuteSound()
+    {
+        AudioListener.pause = false;
+
+        GameObject clickedButton = EventSystem.current.currentSelectedGameObject;
+        clickedButton.GetComponent<SoundButtonImageUpdater>().SetMusicOnImage();
+    }
+
 }

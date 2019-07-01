@@ -590,6 +590,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftBoundary: -5
   rightBoundary: 3
+  playerAnimator: {fileID: 0}
 --- !u!114 &140676273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1700,14 +1701,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.3856009, y: -0.048426483, z: 0.019847432, w: 0.92118025}
-  m_LocalPosition: {x: 0.22000001, y: 9.45, z: 0}
+  m_LocalRotation: {x: 0.38584733, y: -0.035396438, z: 0.014391421, w: 0.92177105}
+  m_LocalPosition: {x: 0.49, y: 9.45, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 956795018}
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 45.426003, y: -6.045, z: -0.064}
+  m_LocalEulerAnglesHint: {x: 45.426003, y: -4.425, z: -0.064}
 --- !u!114 &963194229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2283,6 +2284,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftBoundary: -4
   rightBoundary: 4
+  playerAnimator: {fileID: 0}
 --- !u!114 &1168416707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2326,6 +2328,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.01, y: 1.5, z: 0.01}
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &1168416710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1168416703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a99c7baac9de15146bfe987388e65cda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debugWithArrowKeys: 1
 --- !u!1 &1214031396
 GameObject:
   m_ObjectHideFlags: 0
@@ -3276,9 +3291,9 @@ MonoBehaviour:
     type: 3}
   stripsGallery:
   - {fileID: 4637843022776097577, guid: e587aeb9f9c216443afcb5968bb56e12, type: 3}
+  - {fileID: 4637843022776097577, guid: 17e9ab95b215f9f4b86e6ca2f809ba39, type: 3}
   - {fileID: 4637843022776097577, guid: 65beadad81e0d4b489a643ac89a0f53b, type: 3}
   - {fileID: 4637843022776097577, guid: ee3b708654cce924aa79ebbd01fe5a52, type: 3}
-  - {fileID: 4637843022776097577, guid: 17e9ab95b215f9f4b86e6ca2f809ba39, type: 3}
   stripsArraySize: 40
   stripPoolSize: 30
   generateStripCount: 10

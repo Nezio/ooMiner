@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class PlayerController : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public int rightBoundary = 4;
 
     private Player player;
+    public Animator playerAnimator;
     private bool allowMoveForward = true;
     private bool allowMoveBack = true;
     private bool allowMoveLeft = true;
@@ -21,6 +23,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         player = gameObject.GetComponent<Player>();
+        playerAnimator = player.GetComponent<Animator>();
     }
 
     private void Update()
@@ -29,7 +32,25 @@ public class PlayerController : MonoBehaviour
         { // only allow controls if player isn't frozen 
 
             // android controls ------------------------------------------------------
-            Vector2 startPos = new Vector2(0, 0);
+
+            if(SwipeInput.swipedUp)
+            {
+                MoveForward();
+            }
+            else if(SwipeInput.swipedDown)
+            {
+                MoveBack();
+            }
+            else if (SwipeInput.swipedLeft)
+            {
+                MoveLeft();
+            }
+            else if (SwipeInput.swipedRight)
+            {
+                MoveRight();
+            }
+
+            /*Vector2 startPos = new Vector2(0, 0);
             Vector2 direction;
             string message;
 
@@ -62,7 +83,7 @@ public class PlayerController : MonoBehaviour
                         message = "Ending ";
                         break;
                 }
-            }
+            }*/
 
 
             // windwos/editor controls ------------------------------------------------------
@@ -102,7 +123,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    private void MoveForward()
+    public void MoveForward()
     {
         if(allowMoveForward)
         {
@@ -220,6 +241,9 @@ public class PlayerController : MonoBehaviour
         player.FreezePlayerControls();
         player.SetPlayerMoving(true);
 
+        // play walk animation; if animation transitions were present animation parametars would also have to be used to swithc animations properly
+        playerAnimator.Play("Walk", 0, Random.Range(0f, 1f));
+
         float t = 0f;
         while (t < 1f)
         {
@@ -245,8 +269,10 @@ public class PlayerController : MonoBehaviour
         player.UnfreezePlayerControls();
         player.SetPlayerMoving(false);
 
+        // play idle animation
+        playerAnimator.CrossFade("Idle", 0f);
 
-        if(player.IsOnPlatform())
+        if (player.IsOnPlatform())
         {
             // align player to the platform
             transform.parent.gameObject.GetComponent<Platform>().SnapPlayerToLocalGrid(gameObject);
