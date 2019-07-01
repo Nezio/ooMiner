@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 4637843022776097579}
   - component: {fileID: 4637843022776097578}
   - component: {fileID: -5462186710952125099}
-  - component: {fileID: 801945115357541324}
   m_Layer: 0
   m_Name: Strip_Stone
   m_TagString: Untagged
@@ -42,7 +41,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4637843022776097577}
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &4637843022776097579
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -107,15 +106,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nextStripBlacklist: []
   type: stone
---- !u!114 &801945115357541324
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4637843022776097577}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db8b08d5d073012458df626489fe098d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

@@ -7,7 +7,33 @@ public class MakePlayerFallOnCollide : MonoBehaviour
     [Tooltip("Fall speed fot this collider only. Leave at a negative number to use default player fallSpeed value.")]
     public float fallSpeed = -1;
 
-    /*
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            if (!other.GetComponent<Player>().GetPlayerSafety())
+            { // only make player fall if he is unsafe (not on a platform)
+              //Debug.Log("Fall!");
+
+                if (!other.GetComponent<Player>().IsFalling())
+                { // only do theese once when fall begins
+                    // set player falling
+                    other.GetComponent<Player>().SetPlayerFalling(true);
+
+                    // freeze player controls
+                    other.GetComponent<Player>().FreezePlayerControls();
+
+                    Debug.Log("collider: freeze player controls");
+                }
+
+                StartCoroutine(other.GetComponent<Player>().MakePlayerFall(-1));
+
+            }
+        }
+    }
+
+
+    /* DEPRICATED
     private void OnTriggerStay(Collider other)
     {
         if (other.tag == "Player")
@@ -35,28 +61,7 @@ public class MakePlayerFallOnCollide : MonoBehaviour
         }
     }*/
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Player")
-        {
-            if (!other.GetComponent<Player>().GetPlayerSafety())
-            { // only make player fall if he is unsafe (not on a platform)
-              //Debug.Log("Fall!");
 
-                if (!other.GetComponent<Player>().IsFalling())
-                { // only do theese once when fall begins
-                    // set player falling
-                    other.GetComponent<Player>().SetPlayerFalling(true);
-
-                    // freeze player controls
-                    other.GetComponent<Player>().FreezePlayerControls();
-                }
-
-                StartCoroutine(other.GetComponent<Player>().MakePlayerFall(-1));
-                
-            }
-        }
-    }
 
 
 

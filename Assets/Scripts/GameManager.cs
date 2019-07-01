@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class GameManager : MonoBehaviour
     public GameObject pauseMenu;
     public GameObject gameOverMenu;
     public AudioSource music;
+    public GameObject scoreText;
+    public Text gamoverScoreText;
     
     private void Awake()
     {
@@ -84,5 +87,12 @@ public class GameManager : MonoBehaviour
         {
             music.Stop();
         }
+
+        // hide HUD score
+        scoreText.SetActive(false);
+
+        // set score text
+        gamoverScoreText.text += player.GetRunHighscore().ToString(); ;
+
     }
 }

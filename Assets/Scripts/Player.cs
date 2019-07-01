@@ -1,18 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
     public float moveSpeed = 10f;
     public float fallSpeed = 10f;
-    
-    
+    [Tooltip("Where do you want player score to be displayed")]
+    public Text scoreText;
+
     private bool playerSafe = false;
     private bool frozenControls = false;
     private bool playerMoving = false;
     private Vector3 scale;  // used to reset player scale back in case it changes (happens during lerp in local space, when player moves while on a platform)
     private bool falling = false;
+    private int score = 0;          // current score (this is decremented if player moves back)
+    private int runHighscore = 0;   // highscore during this run only
 
     private void Start()
     {
@@ -32,7 +36,6 @@ public class Player : MonoBehaviour
     {
         return playerSafe;
     }
-
     // player freezing
     public void FreezePlayerControls()
     {
@@ -112,5 +115,27 @@ public class Player : MonoBehaviour
 
             yield return new WaitForEndOfFrame();
         }
+    }
+
+    // score
+    public void AddValueToScore(int value)
+    {
+        // set score
+        score += value;
+
+        UpdateRunHighscore();
+    }
+    public void UpdateRunHighscore()
+    {
+        // update run highscore if needed
+        if (score > runHighscore)
+            runHighscore = score;
+
+        // update score UI text
+        scoreText.text = runHighscore.ToString();
+    }
+    public int GetRunHighscore()
+    {
+        return runHighscore;
     }
 }

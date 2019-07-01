@@ -31,6 +31,8 @@ public class PlayerController : MonoBehaviour
         if(!player.ControlsFrozen())
         { // only allow controls if player isn't frozen 
 
+            Debug.Log("frozen: " + player.ControlsFrozen());
+
             // android controls ------------------------------------------------------
 
             if(SwipeInput.swipedUp)
@@ -137,6 +139,9 @@ public class PlayerController : MonoBehaviour
 
             // play sound
             AudioManager.instance.PlayOneShot("PlayerJump");
+
+            // increment score
+            player.AddValueToScore(1);
         }
     }
     private void MoveBack()
@@ -153,6 +158,9 @@ public class PlayerController : MonoBehaviour
 
             // play sound
             AudioManager.instance.PlayOneShot("PlayerJump");
+
+            // decrement score
+            player.AddValueToScore(-1);
         }
     }
     private void MoveLeft()
@@ -171,7 +179,7 @@ public class PlayerController : MonoBehaviour
             AudioManager.instance.PlayOneShot("PlayerJump");
 
             // if player is on left boundary prevent further movement to the left (NOTE: at this point player is not in the new position yet because of the smooth movement, so use destination instead)
-            //CheckLeftBound(destination);
+            //CheckLeftBound(destination);  // this is now done in this script's update
         }
     }
     private void MoveRight()
@@ -190,7 +198,7 @@ public class PlayerController : MonoBehaviour
             AudioManager.instance.PlayOneShot("PlayerJump");
 
             // if player is on right boundary prevent further movement to the right (NOTE: at this point player is not in the new position yet because of the smooth movement, so use destination instead)
-            //CheckRightBound(destination);
+            //CheckRightBound(destination); // this is now done in this script's update
         }
     }
 
@@ -266,8 +274,12 @@ public class PlayerController : MonoBehaviour
             yield return new WaitForEndOfFrame();
         } // movement ended
 
-        player.UnfreezePlayerControls();
         player.SetPlayerMoving(false);
+
+        // unfreeze if player not falling
+        if(!player.IsFalling())
+            player.UnfreezePlayerControls();
+        
 
         // play idle animation
         playerAnimator.CrossFade("Idle", 0f);
