@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     public Text gamoverScoreText;
     public GameObject tutorialMenu;
 
+    private bool tutorialWindowActive = true;
+
     private void Awake()
     {
         // set time scale in case it is frozen
@@ -50,6 +52,9 @@ public class GameManager : MonoBehaviour
             music.Pause();
         }
 
+        // hide tutorial window
+        tutorialMenu.SetActive(false);
+
     }
 
     public void Resume()
@@ -71,6 +76,10 @@ public class GameManager : MonoBehaviour
         {
             music.Play();
         }
+
+        // show tutorial window if needed
+        if(tutorialWindowActive)
+            tutorialMenu.SetActive(true);
     }
 
     public void EndRun()
@@ -110,6 +119,7 @@ public class GameManager : MonoBehaviour
     {
         // disable tutorial menu
         tutorialMenu.SetActive(false);
+        tutorialWindowActive = false;   // used to make sure it doesn't appear in this run anymore
 
         // start camera movement
         cameraController.SetCameraSpeed(cameraController.defaultCameraSpeed);
