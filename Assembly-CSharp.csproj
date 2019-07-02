@@ -77,7 +77,6 @@
     <Compile Include="Assets\Scripts\LevelMover.cs" />
     <Compile Include="Assets\Scripts\MakePlayerFallOnCollide.cs" />
     <Compile Include="Assets\Scripts\Platform.cs" />
-    <Compile Include="Assets\Scripts\PlatformMover.cs" />
     <Compile Include="Assets\Scripts\PlatformPlayerGrabber.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />

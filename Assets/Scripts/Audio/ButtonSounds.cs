@@ -6,7 +6,8 @@ using UnityEngine.EventSystems;
 public class ButtonSounds : MonoBehaviour
 {
     private void Start()
-    {
+    { // attaching this script to a button allows it to make a sound when clicked/hovered
+
         // add new event trigger to the button
         EventTrigger eventTrigger = gameObject.AddComponent<EventTrigger>();
 

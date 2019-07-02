@@ -3,22 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EndRunOnCollide : MonoBehaviour
-{
-    private GameManager gm;
+{ // attach this scritp to trigger colliders that should end run when player collides with them
+
+    private GameManager gameManager;
 
     private void Start()
     {
         //GameObject.FindGameObjectWithTag("GameManager")
-        gm = GameObject.FindObjectOfType<GameManager>();
-
+        gameManager = GameObject.FindObjectOfType<GameManager>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
-        {
+        { // if player entered this collider end the run
             //Debug.Log("Ending the run.");
-            gm.EndRun();
+            gameManager.EndRun();
         }
 
     }

@@ -22,12 +22,11 @@ public class StripDecorator : MonoBehaviour
 
     private void Start()
     {
+        // initialize blocks array
         blocks = new List<GameObject>();
 
-        // initialize pool
+        // initialize pool array
         pool = new GameObject[poolSize];
-
-
 
         InitializeBlocks();
     }
@@ -53,7 +52,6 @@ public class StripDecorator : MonoBehaviour
                 GameObject newBlock = GameObject.Instantiate(nextBlockType, newPosition, Quaternion.identity);
 
                 // set parent of the block
-                //newBlock.transform.parent = transform;
                 newBlock.transform.SetParent(transform);
 
                 // add the block to the list of blocks
@@ -69,6 +67,8 @@ public class StripDecorator : MonoBehaviour
     private GameObject ChooseNextBlock()
     {
         GameObject block = BlockGallery[Random.Range(0, BlockGallery.Length)];
+
+        // you will probably want to add block spawn chance check here at some point or do code to decrease apparent randomness
 
         return block;
     }
@@ -112,6 +112,7 @@ public class StripDecorator : MonoBehaviour
         }
 
 
+
         List<int> freeXPositions = new List<int>(); // list of x coordinates that are yet unoccupied by a block
         for (int i = positionMin; i <= positionMax; i++) // initialize list of free positions
             freeXPositions.Add(i);
@@ -145,12 +146,11 @@ public class StripDecorator : MonoBehaviour
             else
             { // a match was found in the pool
                 // move to a new position
-                //nextBlock.transform.SetParent(null);    // uncomment if it doesnt move propperly while it has a parent
+                //nextBlock.transform.SetParent(null);    // uncomment if it doesn't move propperly while it has a parent
                 nextBlock.transform.position = newPosition;
             }
 
-            // set parent of the block
-            //nextBlock.transform.parent = transform;
+            // set parent of the block whether instantiated or taken from the pool (if taken from pool nothing will happen)
             nextBlock.transform.SetParent(transform);
 
             // set reference to this new block

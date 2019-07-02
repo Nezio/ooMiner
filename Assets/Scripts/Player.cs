@@ -7,19 +7,19 @@ public class Player : MonoBehaviour
 {
     public float moveSpeed = 10f;
     public float fallSpeed = 10f;
-    [Tooltip("Where do you want player score to be displayed")]
     public GameManager gameManager;
 
     private bool playerSafe = false;
     private bool frozenControls = false;
     private bool playerMoving = false;
-    private Vector3 scale;  // used to reset player scale back in case it changes (happens during lerp in local space, when player moves while on a platform)
     private bool falling = false;
+    private Vector3 scale;  // used to reset player scale back in case it changes (happens during lerp in local space, when player moves while on a platform)
     private int score = 0;          // current score (this is decremented if player moves back)
-    private int runHighscore = 0;   // highscore during this run only
+    private int runHighscore = 0;   // highscore during this run only (this is NOT decremented if player moves back)
 
     private void Start()
     {
+        // save player scale
         scale = transform.localScale;
     }
 
@@ -103,13 +103,13 @@ public class Player : MonoBehaviour
 
     /// <param name="speed">Set speed at 0 or less to use default player fallSpeed value.</param>
     public IEnumerator MakePlayerFall(float speed)
-    { // leave speed at 0 for default value
+    {
         if(speed <= 0)
         {
             speed = fallSpeed;
         }
 
-        while(true)
+        while(true) // currently there is no need for exit condition as player always falls to an end game
         {
             transform.position = new Vector3(transform.position.x, transform.position.y - speed * Time.deltaTime, transform.position.z);
 

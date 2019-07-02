@@ -28,18 +28,8 @@ public class PlatformPlayerGrabber : MonoBehaviour
             // save old player parent
             oldPlayerParent = other.transform.parent;
             // set player parent to this object or platform
-            //other.transform.parent = platform.transform;
             other.transform.SetParent(platform.transform);
 
-            /*
-            // align player to the platform
-            platform.GetComponent<Platform>().SnapPlayerToLocalGrid(other.gameObject);
-
-            // enable player controlls, disable fall and reset player rotation(just in case)
-            other.GetComponent<Player>().UnfreezePlayer();
-            other.GetComponent<Rigidbody>().isKinematic = true;
-            other.transform.eulerAngles = new Vector3(0, other.transform.eulerAngles.y, 0);
-            */
         }
         
     }
@@ -57,7 +47,6 @@ public class PlatformPlayerGrabber : MonoBehaviour
             other.transform.SetParent(oldPlayerParent);
 
             // align player to the world grid
-            //other.transform.position = new Vector3(Mathf.Round(other.transform.position.x), other.transform.position.y, Mathf.Round(other.transform.position.z));
             StartCoroutine(other.GetComponent<Player>().AlignToWorldGrid());
         }
     }

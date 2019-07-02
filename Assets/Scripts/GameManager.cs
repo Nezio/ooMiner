@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public GameObject pauseButton;
     public GameObject pauseMenu;
     public GameObject gameOverMenu;
+    [Tooltip("Where do you want player score to be displayed")]
     public GameObject scoreText;
     public Text gamoverScoreText;
     public GameObject tutorialMenu;

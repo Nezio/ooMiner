@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
 
     private Player player;
     private Animator playerAnimator;
+
     private bool allowMoveForward = true;
     private bool allowMoveBack = true;
     private bool allowMoveLeft = true;
@@ -107,11 +108,7 @@ public class PlayerController : MonoBehaviour
                 MoveRight();
             }
         }
-
         
-        // doesn't work well with current implementation of player-block collision; to use this approach two more variables would be needed:
-        // playerOnLeftBound and playerOnRightBound that would be set here instead of allowMove variables
-
         // still in update; check if player reached level bounds
         if (player.transform.position.x <= leftBoundary)
             playerOnLeftBound = true;
@@ -123,7 +120,6 @@ public class PlayerController : MonoBehaviour
         else
             playerOnRightBound = false;
         
-
     }
 
     public void MoveForward()
@@ -131,9 +127,7 @@ public class PlayerController : MonoBehaviour
         if(allowMoveForward)
         {
             OnPlayerMoved();
-
-            //transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 1); // depricated
-            
+    
             // rotate to face forward
             player.transform.LookAt(new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z + 10));
             // move forward
@@ -150,14 +144,11 @@ public class PlayerController : MonoBehaviour
         {
             OnPlayerMoved();
 
-            //transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - 1); // depricated
-
             // rotate to face back
             player.transform.LookAt(new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z - 10));
             // move back
             Vector3 destination = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z - 1);
             StartCoroutine(MovePlayerToPosition(destination, player.moveSpeed));
-
 
             // decrement score
             player.AddValueToScore(-1);
@@ -169,17 +160,12 @@ public class PlayerController : MonoBehaviour
         {
             OnPlayerMoved();
 
-            //transform.position = new Vector3(transform.position.x - 1, transform.position.y, transform.position.z); // depricated
-
             // rotate to face left
             player.transform.LookAt(new Vector3(player.transform.position.x - 10, player.transform.position.y, player.transform.position.z));
             // move left
             Vector3 destination = new Vector3(player.transform.position.x - 1, player.transform.position.y, player.transform.position.z);
             StartCoroutine(MovePlayerToPosition(destination, player.moveSpeed));
             
-
-            // if player is on left boundary prevent further movement to the left (NOTE: at this point player is not in the new position yet because of the smooth movement, so use destination instead)
-            //CheckLeftBound(destination);  // this is now done in this script's update
         }
     }
     private void MoveRight()
@@ -187,17 +173,12 @@ public class PlayerController : MonoBehaviour
         if(allowMoveRight && !playerOnRightBound)
         {
             OnPlayerMoved();
-
-            //transform.position = new Vector3(transform.position.x + 1, transform.position.y, transform.position.z); // depricated
-
+            
             // rotate to face right
             player.transform.LookAt(new Vector3(player.transform.position.x + 10, player.transform.position.y, player.transform.position.z));
             // move right
             Vector3 destination = new Vector3(player.transform.position.x + 1, player.transform.position.y, player.transform.position.z);
             StartCoroutine(MovePlayerToPosition(destination, player.moveSpeed));
-            
-            // if player is on right boundary prevent further movement to the right (NOTE: at this point player is not in the new position yet because of the smooth movement, so use destination instead)
-            //CheckRightBound(destination); // this is now done in this script's update
         }
     }
     private void OnPlayerMoved()
@@ -256,13 +237,14 @@ public class PlayerController : MonoBehaviour
     }
 
     private IEnumerator MovePlayerToPosition(Vector3 destination, float speed)
-    {
+    { // move player smoothly to destination
+
         Vector3 startPosition = player.transform.position;
 
         player.FreezePlayerControls();
         player.SetPlayerMoving(true);
 
-        // play walk animation; if animation transitions were present animation parametars would also have to be used to swithc animations properly
+        // play walk animation; if animation transitions were present animation parametars would also have to be used to switch animations properly
         playerAnimator.Play("Walk", 0, Random.Range(0f, 1f));
 
         float t = 0f;
@@ -285,7 +267,9 @@ public class PlayerController : MonoBehaviour
             //Debug.Log(player.transform.lossyScale);
             
             yield return new WaitForEndOfFrame();
-        } // movement ended
+        }
+        // MOVE ENDED
+
 
         player.SetPlayerMoving(false);
 
@@ -293,8 +277,7 @@ public class PlayerController : MonoBehaviour
         if(!player.IsFalling())
             player.UnfreezePlayerControls();
         
-
-        // play idle animation
+        // return to idle animation
         playerAnimator.CrossFade("Idle", 0f);
 
         if (player.IsOnPlatform())
@@ -302,7 +285,6 @@ public class PlayerController : MonoBehaviour
             // align player to the platform
             transform.parent.gameObject.GetComponent<Platform>().SnapPlayerToLocalGrid(gameObject);
             // enable player controlls, disable fall and reset player rotation(just in case)
-            //gameObject.GetComponent<Rigidbody>().isKinematic = true;
             player.transform.eulerAngles = new Vector3(0, player.transform.eulerAngles.y, 0);
         }
 
@@ -317,7 +299,6 @@ public class PlayerController : MonoBehaviour
 
         // start the run
         gameManager.StartRun();
-
     }
 
 }

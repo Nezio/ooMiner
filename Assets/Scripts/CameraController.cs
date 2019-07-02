@@ -8,13 +8,15 @@ public class CameraController : MonoBehaviour
     public float defaultCameraSpeed = 1f;
     public float maxCameraSpeed = 3f;
     public int secondsToReachMaxSpeed = 20;
-    
 
-    private float cameraSpeed = 0;
+    [Tooltip("!!! ONLY for debugging trough editor. Don't set value unless in play mode. Default value: 0 !!")]
+    public float cameraSpeed = 0;
+
     private float cameraSpeedupRate;
 
     private void Start()
     {
+        // calculate camera speedup rate
         cameraSpeedupRate = (maxCameraSpeed - defaultCameraSpeed) / secondsToReachMaxSpeed;
     }
 

@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MakePlayerFallOnCollide : MonoBehaviour
-{
-    [Tooltip("Fall speed fot this collider only. Leave at a negative number to use default player fallSpeed value.")]
+{ // attach this script to a trigger collider that should make player fall on contact
+
+    [Tooltip("Fall speed fot this collider only. Leave at a negative number or zero to use default player fallSpeed value.")]
     public float fallSpeed = -1;
 
     private void OnTriggerEnter(Collider other)
@@ -24,8 +25,8 @@ public class MakePlayerFallOnCollide : MonoBehaviour
                     other.GetComponent<Player>().FreezePlayerControls();
                 }
 
-                StartCoroutine(other.GetComponent<Player>().MakePlayerFall(-1));
-
+                // make player fall
+                StartCoroutine(other.GetComponent<Player>().MakePlayerFall(fallSpeed));
             }
         }
     }
@@ -58,9 +59,5 @@ public class MakePlayerFallOnCollide : MonoBehaviour
             }
         }
     }*/
-
-
-
-
-
+    
 }

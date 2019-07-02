@@ -23,7 +23,7 @@ public class Platform : MonoBehaviour
         // set animation speed
         animator.SetFloat("Speed", speed);
 
-        // randomize platform position
+        // randomize platform starting position
         animator.Play("Platform", 0, Random.Range(0f ,1f));
 
         CalculateSnapPositions();
@@ -42,9 +42,9 @@ public class Platform : MonoBehaviour
                 playerFoundOnThisPlatform = true;
         }
         if(playerFoundOnThisPlatform && !playerScript.IsMoving() && !playerScript.IsFalling())
-        {
+        {// only if player is on this platform, not moving and not falling
             bool contains = snapPositions.Contains(player.transform.localPosition.x);
-            if(!contains)
+            if(!contains)   // if player position is not among positions player should snap to: snap to local grid
                 SnapPlayerToLocalGrid(player);
         }
     }
@@ -99,7 +99,6 @@ public class Platform : MonoBehaviour
 
         // snap player to it
         player.transform.localPosition = new Vector3(closestPoint, playerLocPos.y, playerLocPos.z);
-
     }
 
 }

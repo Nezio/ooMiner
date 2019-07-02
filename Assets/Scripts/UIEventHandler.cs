@@ -36,7 +36,6 @@ public class UIEventHandler : MonoBehaviour
         if(AudioListener.pause)
         {
             UnmuteSound();
-
         }
         else
         {
