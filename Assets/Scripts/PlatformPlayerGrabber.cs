@@ -16,20 +16,21 @@ public class PlatformPlayerGrabber : MonoBehaviour
     {
         if(other.tag == "Player")
         { // player entered the platform
-            // don't do anything if player is falling to an end game
-            if (other.GetComponent<Player>().IsFalling())
-                return;
 
-            //Debug.Log("grabbing player");
+            if (!other.GetComponent<Player>().IsFalling())
+            {// only if player is not falling to an endgame
 
-            // make player safe (unable to fall off)
-            other.GetComponent<Player>().MakePlayerSafe();
+                //Debug.Log("grabbing player");
 
-            // save old player parent
-            oldPlayerParent = other.transform.parent;
-            // set player parent to this object or platform
-            other.transform.SetParent(platform.transform);
+                // make player safe (unable to fall off)
+                other.GetComponent<Player>().MakePlayerSafe();
 
+                // save old player parent
+                oldPlayerParent = other.transform.parent;
+                // set player parent to this object or platform
+                other.transform.SetParent(platform.transform);
+            }
+            
         }
         
     }
@@ -38,16 +39,24 @@ public class PlatformPlayerGrabber : MonoBehaviour
     {
         if (other.tag == "Player")
         { // player left the platform
-            //Debug.Log("releasing player");
 
-            // make player unsafe again
-            other.GetComponent<Player>().MakePlayerUnsafe();
+            // only release the player if other platform hasn't grabbed him already
+            // i.e. only release the player if he is a child of this platform (check by ID)
+            if (other.transform.parent != null && other.transform.parent.GetInstanceID() == transform.parent.GetInstanceID())
+            {
+                Debug.Log("releasing player");
 
-            // return old player parent
-            other.transform.SetParent(oldPlayerParent);
+                // make player unsafe again
+                other.GetComponent<Player>().MakePlayerUnsafe();
 
-            // align player to the world grid
-            StartCoroutine(other.GetComponent<Player>().AlignToWorldGrid());
+                // return old player parent
+                other.transform.SetParent(oldPlayerParent);
+
+                // align player to the world grid
+                StartCoroutine(other.GetComponent<Player>().AlignToWorldGrid());
+            }
+            
         }
     }
+
 }

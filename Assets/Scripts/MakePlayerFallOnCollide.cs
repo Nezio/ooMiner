@@ -14,7 +14,8 @@ public class MakePlayerFallOnCollide : MonoBehaviour
         {
             if (!other.GetComponent<Player>().GetPlayerSafety())
             { // only make player fall if he is unsafe (not on a platform)
-              //Debug.Log("Fall!");
+
+                //Debug.Log("Fall!");
 
                 if (!other.GetComponent<Player>().IsFalling())
                 { // only do theese once when fall begins

@@ -109,6 +109,12 @@ public class Player : MonoBehaviour
             speed = fallSpeed;
         }
 
+        // debug
+        // wait for a move to end
+        if (playerMoving)
+            yield return new WaitForEndOfFrame();
+
+
         while(true) // currently there is no need for exit condition as player always falls to an end game
         {
             transform.position = new Vector3(transform.position.x, transform.position.y - speed * Time.deltaTime, transform.position.z);
