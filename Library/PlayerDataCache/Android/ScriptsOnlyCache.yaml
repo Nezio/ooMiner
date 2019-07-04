@@ -150,7 +150,7 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 10642}
     - Class: 114
-      Script: {instanceID: 10646}
+      Script: {instanceID: 10644}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -282,6 +282,10 @@ ScriptsOnlyBuild:
     - Class: 65
       Script: {instanceID: 0}
     - Class: 81
+      Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
       Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
@@ -802,7 +806,7 @@ ScriptsOnlyBuild:
     className: AudioManager
   - hash:
       serializedVersion: 2
-      Hash: ef1ab0a66ff4fb4ceefb70f4bee75f9d
+      Hash: 87ef11474a86c477bf45aa2698a92cd1
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Level
@@ -1000,7 +1004,7 @@ ScriptsOnlyBuild:
     className: ButtonSounds
   - hash:
       serializedVersion: 2
-      Hash: 5f397efe70c677a30cdc1a40e4074d09
+      Hash: 8c8bd74a0bc3b3f899bdf7584223d09b
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CameraController
@@ -1096,12 +1100,6 @@ ScriptsOnlyBuild:
     className: Block
   - hash:
       serializedVersion: 2
-      Hash: 791fb6892348fde338fae1fdf6c80c8f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: PlatformMover
-  - hash:
-      serializedVersion: 2
       Hash: fcd0fd353cda9b5cf6b08282c9d57304
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -1117,4 +1115,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/MainMenu.unity
   - Assets/Scenes/Game.unity
   - Assets/Scenes/OptionsMenu.unity
-  playerPath: D:/Development/Unity/ooMiner/Builds/ooMiner v0.4.1.apk
+  playerPath: D:/Development/Unity/ooMiner/Builds/ooMiner v0.5.1.apk

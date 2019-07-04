@@ -194,7 +194,7 @@ public class PlayerController : MonoBehaviour
             OnPlayerFirstMove();
         }
 
-        Debug.Log("moved!");
+        //Debug.Log("moved!");
     }
 
 

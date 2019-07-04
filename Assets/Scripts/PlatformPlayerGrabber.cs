@@ -30,6 +30,8 @@ public class PlatformPlayerGrabber : MonoBehaviour
                 // set player parent to this object or platform
                 other.transform.SetParent(platform.transform);
             }
+            //else
+            //    Debug.Log("can't grab!");
             
         }
         
@@ -44,17 +46,20 @@ public class PlatformPlayerGrabber : MonoBehaviour
             // i.e. only release the player if he is a child of this platform (check by ID)
             if (other.transform.parent != null && other.transform.parent.GetInstanceID() == transform.parent.GetInstanceID())
             {
-                Debug.Log("releasing player");
+                //Debug.Log("releasing player to: " + (oldPlayerParent == null ? "null" : oldPlayerParent.gameObject.name) );
 
                 // make player unsafe again
                 other.GetComponent<Player>().MakePlayerUnsafe();
 
                 // return old player parent
-                other.transform.SetParent(oldPlayerParent);
+                //other.transform.SetParent(oldPlayerParent);
+                other.transform.SetParent(null);    // fixes player not beeing released when leaving platforms after jumping platforms and having release triggered after grab
 
                 // align player to the world grid
                 StartCoroutine(other.GetComponent<Player>().AlignToWorldGrid());
             }
+            //else
+            //    Debug.Log("not releasing!");
             
         }
     }
