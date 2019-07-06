@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     public GameManager gameManager;
 
     private bool playerSafe = false;
-    private bool frozenControls = false;
+    private bool frozenControls = true;
     private bool playerMoving = false;
     private bool falling = false;
     private Vector3 scale;  // used to reset player scale back in case it changes (happens during lerp in local space, when player moves while on a platform)

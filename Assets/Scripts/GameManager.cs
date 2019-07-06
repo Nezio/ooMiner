@@ -18,15 +18,12 @@ public class GameManager : MonoBehaviour
     public GameObject tutorialMenu;
 
     private bool tutorialWindowActive = true;
-
-    private void Awake()
-    {
-        // set time scale in case it is frozen
-        Time.timeScale = 1f;
-    }
-
+    
     private void Start()
     {
+        // start the game (same as resume)
+        Resume();
+
         // read settings and set camera perspective
 
         // read settings and enable tutorial window?
@@ -59,6 +56,12 @@ public class GameManager : MonoBehaviour
 
     public void Resume()
     {
+        StartCoroutine(ResumeCorutine());
+    }
+    private IEnumerator ResumeCorutine()
+    {
+        yield return new WaitForSecondsRealtime(0.1f);
+
         // unfreeze player
         player.UnfreezePlayerControls();
 
@@ -78,8 +81,10 @@ public class GameManager : MonoBehaviour
         }
 
         // show tutorial window if needed
-        if(tutorialWindowActive)
+        if (tutorialWindowActive)
             tutorialMenu.SetActive(true);
+
+        yield return null;
     }
 
     public void EndRun()

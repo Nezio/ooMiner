@@ -32,8 +32,10 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -944,7 +946,7 @@ ScriptsOnlyBuild:
     className: ActivationPlayableAsset
   - hash:
       serializedVersion: 2
-      Hash: 7243b1406993cbe36179ce4a70e03410
+      Hash: 55bbdbf755efaad36419042e22603162
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: SwipeInput
@@ -1115,4 +1117,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/MainMenu.unity
   - Assets/Scenes/Game.unity
   - Assets/Scenes/OptionsMenu.unity
-  playerPath: D:/Development/Unity/ooMiner/Builds/ooMiner v0.5.1.apk
+  playerPath: D:/Development/Unity/ooMiner/Builds/ooMiner v0.6.0.apk
