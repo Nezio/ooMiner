@@ -37,19 +37,19 @@ public class PlayerController : MonoBehaviour
 
             // android controls ------------------------------------------------------
 
-            if(SwipeInput.swipedUp || SwipeInput.tap)
+            if(AndroidInput.swipedUp || AndroidInput.tap)
             {
                 MoveForward();
             }
-            else if(SwipeInput.swipedDown)
+            else if(AndroidInput.swipedDown)
             {
                 MoveBack();
             }
-            else if (SwipeInput.swipedLeft)
+            else if (AndroidInput.swipedLeft)
             {
                 MoveLeft();
             }
-            else if (SwipeInput.swipedRight)
+            else if (AndroidInput.swipedRight)
             {
                 MoveRight();
             }

@@ -2,29 +2,25 @@
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class SwipeInput : MonoBehaviour
+public class AndroidInput : MonoBehaviour
 {
     public Text debugText;
-
+    public bool debugWithArrowKeys = true;
+    
     // If the touch is longer than maxSwipeTime, we don't consider it a swipe
     public const float maxSwipeTime = 0.5f;
-
     // Factor of the screen width that we consider a swipe
     // 0.17 works well for portrait mode 16:9 phone
     public const float minSwipeDistance = 0.02f;
-
     public const float maxTapTime = 0.3f;
     public const float maxTapDistance = 0.01f; // should be smaller than minSwipeDistance
-
-
+    
     public static bool swipedRight = false;
     public static bool swipedLeft = false;
     public static bool swipedUp = false;
     public static bool swipedDown = false;
     public static bool tap = false;
-
-    public bool debugWithArrowKeys = true;
-
+    
     private Vector2 startPos;
     private float startTime;
 
@@ -106,9 +102,29 @@ public class SwipeInput : MonoBehaviour
             if(touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved && !touchedButton)
             {
                 // if touch longer than both max time for swipe and tap
-                if(Time.time - startTime > maxTapTime && Time.time - startTime > maxSwipeTime)
+                if (Time.time - startTime > maxTapTime && Time.time - startTime > maxSwipeTime)
                 { // hold
-                    ;
+                    debugText.text = "Hold" + "\n" + debugText.text;
+
+                    Ray raycast = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+                    RaycastHit raycastHit;
+                    if (Physics.Raycast(raycast, out raycastHit))
+                    {
+                        // debug text here
+                        
+                        if (raycastHit.collider.name == "name")
+                        {
+                            ;
+                        }
+
+                        //OR with Tag
+
+                        if (raycastHit.collider.CompareTag("tag"))
+                        {
+                            ;
+                        }
+                    }
+
                 }
             }
         }

@@ -650,7 +650,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e44ec011928ffd240839e3b1474018e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxLevelDistance: 150
+  maxLevelDistance: 1000
   level: {fileID: 2084646547}
   player: {fileID: 1168416703}
 --- !u!4 &255811926
@@ -3259,7 +3259,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1730107014
 RectTransform:
   m_ObjectHideFlags: 0

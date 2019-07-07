@@ -62,6 +62,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\AndroidInput.cs" />
     <Compile Include="Assets\Scripts\Audio\AudioManager.cs" />
     <Compile Include="Assets\Scripts\Audio\ButtonSounds.cs" />
     <Compile Include="Assets\Scripts\Audio\Music.cs" />
@@ -85,7 +86,6 @@
     <Compile Include="Assets\Scripts\SoundButtonImageUpdater.cs" />
     <Compile Include="Assets\Scripts\Strip.cs" />
     <Compile Include="Assets\Scripts\StripDecorator.cs" />
-    <Compile Include="Assets\Scripts\SwipeInput.cs" />
     <Compile Include="Assets\Scripts\Tools.cs" />
     <Compile Include="Assets\Scripts\UIEventHandler.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />

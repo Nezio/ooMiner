@@ -1,6 +1,7 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - AndroidInput
     - AudioManager
     - Block
     - ButtonSounds
@@ -21,7 +22,6 @@ ScriptsOnlyBuild:
     - SoundButtonImageUpdater
     - Strip
     - StripDecorator
-    - SwipeInput
     - UIEventHandler
     Unity.TextMeshPro.dll:
     - TMPro.TMP_FontAsset
@@ -32,10 +32,8 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -949,7 +947,7 @@ ScriptsOnlyBuild:
       Hash: 55bbdbf755efaad36419042e22603162
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: SwipeInput
+    className: AndroidInput
   - hash:
       serializedVersion: 2
       Hash: 88cc9df3c6fc697bfbeacd24c0d6f2d7
@@ -1117,4 +1115,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/MainMenu.unity
   - Assets/Scenes/Game.unity
   - Assets/Scenes/OptionsMenu.unity
-  playerPath: D:/Development/Unity/ooMiner/Builds/ooMiner v0.6.0.apk
+  playerPath: D:/Development/Unity/ooMiner/Builds/ooMiner v0.7.0.apk
