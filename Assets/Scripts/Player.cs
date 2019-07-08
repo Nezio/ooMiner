@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     public float moveSpeed = 10f;
     public float fallSpeed = 10f;
     public GameManager gameManager;
+    public float digSpeed = 1f;
 
     private bool playerSafe = false;
     private bool frozenControls = true;
@@ -16,6 +17,7 @@ public class Player : MonoBehaviour
     private Vector3 scale;  // used to reset player scale back in case it changes (happens during lerp in local space, when player moves while on a platform)
     private int score = 0;          // current score (this is decremented if player moves back)
     private int runHighscore = 0;   // highscore during this run only (this is NOT decremented if player moves back)
+    private bool digging = false;
 
     private void Start()
     {
@@ -144,4 +146,57 @@ public class Player : MonoBehaviour
     {
         return runHighscore;
     }
+
+    // digging
+    public void TryDigBlock(GameObject blockObject)
+    { // every call to this function damages the block a bit; damage will be based on type of pickaxe equipped
+
+        Block block = null;
+        // check if it's really a block and is mineable
+        try
+        {
+            block = blockObject.GetComponent<Block>();
+        }
+        catch { }
+        if(block == null || !block.isMineable)
+        {
+            //Debug.Log(blockObject + " is not a valid block or is not mineable!");
+        }
+        else
+        { // mine the block
+            //Debug.Log("Mining...");
+            if (!digging)
+                StartCoroutine(DigBlock(block));
+        }
+
+    }
+    private IEnumerator DigBlock(Block block)
+    {
+        digging = true;
+
+        // dig animation would be started here
+
+        // wait some time (because of player dig speed)
+        yield return new WaitForSeconds(digSpeed);
+
+        Debug.Log("Mineable block: " + block.name + " hit!");
+
+        // damage block
+
+        // play sound
+
+        // show particles
+
+        digging = false;
+
+        yield return null;
+    }
+    public bool IsDigging()
+    {
+        return digging;
+    }
+
+
+
+
 }

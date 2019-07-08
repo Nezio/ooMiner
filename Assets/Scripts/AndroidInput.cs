@@ -6,7 +6,8 @@ public class AndroidInput : MonoBehaviour
 {
     public Text debugText;
     public bool debugWithArrowKeys = true;
-    
+    public bool debugHoldWithLeftMouse = true;
+
     // If the touch is longer than maxSwipeTime, we don't consider it a swipe
     public const float maxSwipeTime = 0.5f;
     // Factor of the screen width that we consider a swipe
@@ -20,7 +21,8 @@ public class AndroidInput : MonoBehaviour
     public static bool swipedUp = false;
     public static bool swipedDown = false;
     public static bool tap = false;
-    
+    public static bool hold = false;
+
     private Vector2 startPos;
     private float startTime;
 
@@ -31,6 +33,7 @@ public class AndroidInput : MonoBehaviour
         swipedUp = false;
         swipedDown = false;
         tap = false;
+        hold = false;
 
         if (Input.touches.Length > 0)
         {
@@ -104,27 +107,9 @@ public class AndroidInput : MonoBehaviour
                 // if touch longer than both max time for swipe and tap
                 if (Time.time - startTime > maxTapTime && Time.time - startTime > maxSwipeTime)
                 { // hold
-                    debugText.text = "Hold" + "\n" + debugText.text;
+                    //debugText.text = "Hold" + "\n" + debugText.text;
 
-                    Ray raycast = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
-                    RaycastHit raycastHit;
-                    if (Physics.Raycast(raycast, out raycastHit))
-                    {
-                        // debug text here
-                        
-                        if (raycastHit.collider.name == "name")
-                        {
-                            ;
-                        }
-
-                        //OR with Tag
-
-                        if (raycastHit.collider.CompareTag("tag"))
-                        {
-                            ;
-                        }
-                    }
-
+                    hold = true;
                 }
             }
         }
@@ -136,5 +121,13 @@ public class AndroidInput : MonoBehaviour
             swipedRight = swipedRight || Input.GetKeyDown(KeyCode.RightArrow);
             swipedLeft = swipedLeft || Input.GetKeyDown(KeyCode.LeftArrow);
         }
+#if UNITY_EDITOR
+        if (debugHoldWithLeftMouse)
+        {
+            hold = hold || Input.GetMouseButton(0);
+        }
+#endif
+
+
     }
 }

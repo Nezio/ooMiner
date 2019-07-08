@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Block : MonoBehaviour
 {
+    public bool isMineable = false;
+
     [SerializeField]
     private string type;
 

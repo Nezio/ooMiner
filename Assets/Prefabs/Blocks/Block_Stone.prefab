@@ -105,6 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9cc0daf48ce78046bd6d4cb0fb477ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isMineable: 1
   type: stone
 --- !u!114 &734194601711863867
 MonoBehaviour:
