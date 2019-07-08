@@ -2562,7 +2562,7 @@ MonoBehaviour:
   moveSpeed: 10
   fallSpeed: 10
   gameManager: {fileID: 937230290}
-  digSpeed: 1
+  digSpeed: 0.25
 --- !u!54 &1168416708
 Rigidbody:
   m_ObjectHideFlags: 0

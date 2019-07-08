@@ -107,6 +107,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isMineable: 1
   type: gold
+  health: 50
 --- !u!114 &734194601711863867
 MonoBehaviour:
   m_ObjectHideFlags: 0

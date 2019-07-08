@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     private int score = 0;          // current score (this is decremented if player moves back)
     private int runHighscore = 0;   // highscore during this run only (this is NOT decremented if player moves back)
     private bool digging = false;
+    private float baseDamage = 10f;
 
     private void Start()
     {
@@ -182,6 +183,7 @@ public class Player : MonoBehaviour
         Debug.Log("Mineable block: " + block.name + " hit!");
 
         // damage block
+        block.DamageBlock(baseDamage);
 
         // play sound
 
