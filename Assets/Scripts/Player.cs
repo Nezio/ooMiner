@@ -149,7 +149,7 @@ public class Player : MonoBehaviour
     }
 
     // digging
-    public void TryDigBlock(GameObject blockObject)
+    public void TryDigBlock(GameObject blockObject,Vector3 hitPosition)
     { // every call to this function damages the block a bit; damage will be based on type of pickaxe equipped
 
         Block block = null;
@@ -167,27 +167,24 @@ public class Player : MonoBehaviour
         { // mine the block
             //Debug.Log("Mining...");
             if (!digging)
-                StartCoroutine(DigBlock(block));
+                StartCoroutine(DigBlock(block, hitPosition));
         }
 
     }
-    private IEnumerator DigBlock(Block block)
+    private IEnumerator DigBlock(Block block, Vector3 hitPosition)
     {
         digging = true;
 
         // dig animation would be started here
+        
+        // damage block
+        block.DamageBlock(baseDamage, hitPosition);
 
         // wait some time (because of player dig speed)
         yield return new WaitForSeconds(digSpeed);
 
-        Debug.Log("Mineable block: " + block.name + " hit!");
-
-        // damage block
-        block.DamageBlock(baseDamage);
-
-        // play sound
-
-        // show particles
+        //Debug.Log("Mineable block: " + block.name + " hit!");
+        
 
         digging = false;
 

@@ -4,51 +4,66 @@ using UnityEngine;
 
 public class Block : MonoBehaviour
 {
-    public bool isMineable = false;
-
     [SerializeField]
     private string type;
-
+    public bool isMineable = false;
     [SerializeField]
     private float health = 100f;
+    public GameObject particle_block_hit = null;
+    public GameObject particle_block_destroy = null;
 
-    // spawn chance here
+    private float defaultHealth;
 
-    // public bool collideWithPlayer = true; // DEPRICATED; if you want a block to block the player attach CollideWithPlayer script instead
+    private void Awake()
+    {
+        defaultHealth = health;
+    }
 
     public string GetBlockType()
     {
         return type;
     }
 
-    public void DamageBlock(float value)
+    public void DamageBlock(float value, Vector3 hitPosition)
     {
-        if(health > 0)
+        if(isMineable)
         {
+            // decrease health
             health -= value;
 
-            TryDestroyBlock();
+            if (health > 0)
+            { // block is still standing
+
+                // play block hit sound
+                AudioManager.instance.PlayOneShot("Block_Hit_0" + Random.Range(1, 4));
+
+                // spawn block hit particle
+                if (particle_block_hit != null)
+                    Instantiate(particle_block_hit, hitPosition, Quaternion.identity);
+            }
+            else
+            { // block is at 0 or less health
+
+                // play destroy sound
+                AudioManager.instance.PlayOneShot("Block_Break");
+
+                // spawn destroy particles
+                if (particle_block_destroy != null)
+                    Instantiate(particle_block_destroy, transform.position, Quaternion.identity);
+
+                // destroy block
+                gameObject.SetActive(false);
+
+            }
         }
     }
-
-    private void TryDestroyBlock()
+    
+    public void ReinitializeBlock()
     {
-        Debug.Log("Block health: " + health);
+        // set active
+        gameObject.SetActive(true);
 
-        if(health <= 0)
-        { // destroy block
-            Debug.Log("Disable block!");
-
-            // spawn destroy particles
-
-
-            // play destroy sound
-
-
-            // disable block
-            gameObject.SetActive(false);
-
-        }
+        // restore default health
+        health = defaultHealth;
     }
-
 }

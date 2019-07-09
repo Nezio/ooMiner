@@ -188,23 +188,23 @@ public class PlayerController : MonoBehaviour
             allowMoveLeft = true;
     }
     
-    public void SetAllowMove(string direction, bool value)
+    public void SetAllowMove(string direction, bool allowMove)
     {
         if(direction.ToLower() == "forward")
         {
-            allowMoveForward = value;
+            allowMoveForward = allowMove;
         }
         else if (direction.ToLower() == "back")
         {
-            allowMoveBack = value;
+            allowMoveBack = allowMove;
         }
         else if (direction.ToLower() == "left")
         {
-            allowMoveLeft = value;
+            allowMoveLeft = allowMove;
         }
         else if (direction.ToLower() == "right")
         {
-            allowMoveRight = value;
+            allowMoveRight = allowMove;
         }
     }
 
@@ -289,7 +289,7 @@ public class PlayerController : MonoBehaviour
                 //debugText.text = raycastHit.collider.gameObject + "\n" + debugText.text;
                 //Debug.Log(raycastHit.collider.gameObject);
 
-                playerScript.TryDigBlock(raycastHit.collider.gameObject);
+                playerScript.TryDigBlock(raycastHit.collider.gameObject, raycastHit.point);
             }
         }
         

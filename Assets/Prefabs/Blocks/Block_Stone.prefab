@@ -105,9 +105,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9cc0daf48ce78046bd6d4cb0fb477ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isMineable: 1
   type: stone
+  isMineable: 1
   health: 30
+  particle_block_hit: {fileID: 2423544227548374930, guid: ef56b045d7a977e42a4c981d9516dc9b,
+    type: 3}
+  particle_block_destroy: {fileID: 2423544227548374930, guid: 67d2798271ec6054dbc9ac3ed25069e2,
+    type: 3}
 --- !u!114 &734194601711863867
 MonoBehaviour:
   m_ObjectHideFlags: 0

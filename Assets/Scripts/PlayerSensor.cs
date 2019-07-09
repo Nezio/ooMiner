@@ -18,6 +18,12 @@ public class PlayerSensor : MonoBehaviour
     }
 
 
+    private void FixedUpdate()
+    { // fixed update is called before trigger events
+        // enable movement; if sensor detects a block it is going to override this later during this frame
+        SetAllowPlayerMovement(true);
+    }
+
     private void OnTriggerStay(Collider other)
     {
         CollideWithPlayer collideWithPlayer = null;
@@ -36,6 +42,7 @@ public class PlayerSensor : MonoBehaviour
         }
     }
 
+    /* no longer needed as fixed update is used
     private void OnTriggerExit(Collider other)
     {
         CollideWithPlayer collideWithPlayer = null;
@@ -52,25 +59,24 @@ public class PlayerSensor : MonoBehaviour
             //Debug.Log(side + " exit");
             SetAllowPlayerMovement(true);
         }
+    }*/
 
-    }
-
-    private void SetAllowPlayerMovement(bool value)
+    private void SetAllowPlayerMovement(bool allowMove)
     { // allow or disable player movement in appropriate directaion based on what sensor is this; value determines if movement is going to be set on or off
 
         switch (side)
         {
             case "front":
-                playerController.SetAllowMove("forward", value);
+                playerController.SetAllowMove("forward", allowMove);
                 break;
             case "back":
-                playerController.SetAllowMove("back", value);
+                playerController.SetAllowMove("back", allowMove);
                 break;
             case "left":
-                playerController.SetAllowMove("left", value);
+                playerController.SetAllowMove("left", allowMove);
                 break;
             case "right":
-                playerController.SetAllowMove("right", value);
+                playerController.SetAllowMove("right", allowMove);
                 break;
             default:
                 Debug.Log("PlayerSensor: '" + side + "' is not a valid side! Use 'front', 'back', 'left' or 'right'");

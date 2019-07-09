@@ -157,8 +157,11 @@ public class StripDecorator : MonoBehaviour
             blocks[i] = nextBlock;
 
             // in case block is disabled (happens with coins and other collectibles) enable it
-            if (!blocks[i].activeInHierarchy)
-                blocks[i].SetActive(true);
+            //if (!blocks[i].activeInHierarchy)
+            //    blocks[i].SetActive(true);
+
+            // in case block is disabled (happens with coins and other collectibles) enable it
+            blocks[i].GetComponent<Block>().ReinitializeBlock();
         }
         
     }

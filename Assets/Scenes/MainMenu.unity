@@ -1270,6 +1270,30 @@ MonoBehaviour:
     volume: 0.4
     pitch: 1
     loop: 0
+  - source: {fileID: 0}
+    name: Block_Hit_01
+    clip: {fileID: 8300000, guid: 30044fe4c9bf9ff489744fdd9d874ec0, type: 3}
+    volume: 0.8
+    pitch: 1
+    loop: 0
+  - source: {fileID: 0}
+    name: Block_Hit_02
+    clip: {fileID: 8300000, guid: 3e4bcb19a2d9f604881609f2ad8566f7, type: 3}
+    volume: 0.8
+    pitch: 1
+    loop: 0
+  - source: {fileID: 0}
+    name: Block_Hit_03
+    clip: {fileID: 8300000, guid: 3610d91f534da9144b263ae46a178397, type: 3}
+    volume: 0.8
+    pitch: 1
+    loop: 0
+  - source: {fileID: 0}
+    name: Block_Break
+    clip: {fileID: 8300000, guid: de5cce5d6f98721458f3647141de0f57, type: 3}
+    volume: 0.8
+    pitch: 1
+    loop: 0
 --- !u!4 &607151180
 Transform:
   m_ObjectHideFlags: 0

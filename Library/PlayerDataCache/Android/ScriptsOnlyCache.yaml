@@ -161,6 +161,10 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
+    - Class: 198
+      Script: {instanceID: 0}
+    - Class: 199
+      Script: {instanceID: 0}
     - Class: 213
       Script: {instanceID: 0}
     - Class: 222
@@ -251,6 +255,10 @@ ScriptsOnlyBuild:
     - Class: 137
       Script: {instanceID: 0}
     - Class: 157
+      Script: {instanceID: 0}
+    - Class: 198
+      Script: {instanceID: 0}
+    - Class: 199
       Script: {instanceID: 0}
     - Class: 213
       Script: {instanceID: 0}
@@ -1094,7 +1102,7 @@ ScriptsOnlyBuild:
     className: SignalEmitter
   - hash:
       serializedVersion: 2
-      Hash: b1f2d7955c5c56ed57d1e76287b7930f
+      Hash: f328d3a20e78bffcc367837638b11627
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Block
@@ -1115,4 +1123,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/MainMenu.unity
   - Assets/Scenes/Game.unity
   - Assets/Scenes/OptionsMenu.unity
-  playerPath: D:/Development/Unity/ooMiner/Builds/ooMiner v0.7.0.apk
+  playerPath: D:/Development/Unity/ooMiner/Builds/ooMiner v0.7.1.apk
