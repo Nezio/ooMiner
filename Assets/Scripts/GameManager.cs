@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public GameObject tutorialMenu;
 
     private bool tutorialWindowActive = true;
+    private float runStartTime = -1;   // record time when run starts
     
     private void Start()
     {
@@ -128,10 +129,18 @@ public class GameManager : MonoBehaviour
 
         // start camera movement
         cameraController.SetCameraSpeed(cameraController.defaultCameraSpeed);
+
+        // record time at run start
+        runStartTime = Time.time;
     }
 
     public void UpdateScoreTextUI()
     {
         scoreText.GetComponent<Text>().text = player.GetRunHighscore().ToString();
+    }
+
+    public float GetRunStartTime()
+    {
+        return runStartTime;
     }
 }

@@ -35,6 +35,8 @@ ScriptsOnlyBuild:
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
     - UnityEditor.Graphs.AnimatorControllerTool
+    UnityEditor.TestRunner.dll:
+    - UnityEditor.TestTools.TestRunner.TestListCacheData
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.StandaloneInputModule
@@ -90,65 +92,65 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9274}
-    - Class: 114
-      Script: {instanceID: 9346}
+      Script: {instanceID: 9276}
     - Class: 114
       Script: {instanceID: 9348}
     - Class: 114
-      Script: {instanceID: 9354}
+      Script: {instanceID: 9350}
     - Class: 114
-      Script: {instanceID: 9360}
+      Script: {instanceID: 9356}
     - Class: 114
-      Script: {instanceID: 9368}
+      Script: {instanceID: 9362}
     - Class: 114
-      Script: {instanceID: 9380}
+      Script: {instanceID: 9370}
     - Class: 114
-      Script: {instanceID: 9400}
+      Script: {instanceID: 9382}
     - Class: 114
-      Script: {instanceID: 9404}
+      Script: {instanceID: 9402}
     - Class: 114
       Script: {instanceID: 9406}
     - Class: 114
-      Script: {instanceID: 9436}
+      Script: {instanceID: 9408}
     - Class: 114
-      Script: {instanceID: 9456}
+      Script: {instanceID: 9438}
     - Class: 114
-      Script: {instanceID: 9596}
+      Script: {instanceID: 9458}
     - Class: 114
-      Script: {instanceID: 9620}
+      Script: {instanceID: 9598}
     - Class: 114
-      Script: {instanceID: 9624}
+      Script: {instanceID: 9622}
     - Class: 114
-      Script: {instanceID: 9724}
+      Script: {instanceID: 9626}
     - Class: 114
-      Script: {instanceID: 9920}
+      Script: {instanceID: 9726}
     - Class: 114
-      Script: {instanceID: 9962}
+      Script: {instanceID: 9922}
     - Class: 114
-      Script: {instanceID: 10086}
+      Script: {instanceID: 9964}
     - Class: 114
-      Script: {instanceID: 10148}
+      Script: {instanceID: 10088}
     - Class: 114
-      Script: {instanceID: 10182}
+      Script: {instanceID: 10150}
     - Class: 114
-      Script: {instanceID: 10192}
+      Script: {instanceID: 10184}
     - Class: 114
-      Script: {instanceID: 10224}
+      Script: {instanceID: 10194}
     - Class: 114
-      Script: {instanceID: 10366}
+      Script: {instanceID: 10226}
     - Class: 114
-      Script: {instanceID: 10466}
+      Script: {instanceID: 10368}
     - Class: 114
-      Script: {instanceID: 10538}
+      Script: {instanceID: 10468}
     - Class: 114
-      Script: {instanceID: 10592}
+      Script: {instanceID: 10540}
     - Class: 114
-      Script: {instanceID: 10622}
+      Script: {instanceID: 10594}
     - Class: 114
-      Script: {instanceID: 10642}
+      Script: {instanceID: 10624}
     - Class: 114
       Script: {instanceID: 10644}
+    - Class: 114
+      Script: {instanceID: 10646}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -211,41 +213,41 @@ ScriptsOnlyBuild:
     - Class: 109
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9346}
-    - Class: 114
       Script: {instanceID: 9348}
     - Class: 114
-      Script: {instanceID: 9354}
+      Script: {instanceID: 9350}
     - Class: 114
-      Script: {instanceID: 9360}
+      Script: {instanceID: 9356}
     - Class: 114
-      Script: {instanceID: 9368}
+      Script: {instanceID: 9362}
     - Class: 114
-      Script: {instanceID: 9400}
+      Script: {instanceID: 9370}
     - Class: 114
-      Script: {instanceID: 9404}
+      Script: {instanceID: 9402}
     - Class: 114
       Script: {instanceID: 9406}
     - Class: 114
-      Script: {instanceID: 9620}
+      Script: {instanceID: 9408}
     - Class: 114
-      Script: {instanceID: 9768}
+      Script: {instanceID: 9622}
     - Class: 114
-      Script: {instanceID: 9914}
+      Script: {instanceID: 9770}
     - Class: 114
-      Script: {instanceID: 9962}
+      Script: {instanceID: 9916}
     - Class: 114
-      Script: {instanceID: 10102}
+      Script: {instanceID: 9964}
     - Class: 114
-      Script: {instanceID: 10112}
+      Script: {instanceID: 10104}
     - Class: 114
-      Script: {instanceID: 10192}
+      Script: {instanceID: 10114}
     - Class: 114
-      Script: {instanceID: 10366}
+      Script: {instanceID: 10194}
     - Class: 114
-      Script: {instanceID: 10496}
+      Script: {instanceID: 10368}
     - Class: 114
-      Script: {instanceID: 10642}
+      Script: {instanceID: 10498}
+    - Class: 114
+      Script: {instanceID: 10644}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -298,31 +300,31 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 9346}
-    - Class: 114
       Script: {instanceID: 9348}
     - Class: 114
-      Script: {instanceID: 9354}
+      Script: {instanceID: 9350}
     - Class: 114
-      Script: {instanceID: 9360}
+      Script: {instanceID: 9356}
     - Class: 114
-      Script: {instanceID: 9368}
+      Script: {instanceID: 9362}
     - Class: 114
-      Script: {instanceID: 9380}
+      Script: {instanceID: 9370}
     - Class: 114
-      Script: {instanceID: 9400}
+      Script: {instanceID: 9382}
     - Class: 114
-      Script: {instanceID: 9404}
+      Script: {instanceID: 9402}
     - Class: 114
       Script: {instanceID: 9406}
     - Class: 114
-      Script: {instanceID: 9962}
+      Script: {instanceID: 9408}
     - Class: 114
-      Script: {instanceID: 10102}
+      Script: {instanceID: 9964}
     - Class: 114
-      Script: {instanceID: 10192}
+      Script: {instanceID: 10104}
     - Class: 114
-      Script: {instanceID: 10568}
+      Script: {instanceID: 10194}
+    - Class: 114
+      Script: {instanceID: 10570}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -1121,4 +1123,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/MainMenu.unity
   - Assets/Scenes/Game.unity
   - Assets/Scenes/OptionsMenu.unity
-  playerPath: D:/Development/Unity/ooMiner/Builds/ooMiner v0.7.2.apk
+  playerPath: D:/Development/Unity/ooMiner/Builds/ooMiner v0.8.0.apk

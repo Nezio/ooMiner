@@ -15,13 +15,19 @@ public class StripDecorator : MonoBehaviour
     [SerializeField]
     private int numberOfBlocksToSpawn;   // if you want to change this dynamically you must add a function that will change it and resize blocks array
     public int poolSize = 10;
-
+    
     
     private List<GameObject> blocks;
     private GameObject[] pool;
 
+    private GameManager gameManager;
+
     private void Start()
     {
+        // initialize game manager and get run start time
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        
+
         // initialize blocks array
         blocks = new List<GameObject>();
 
@@ -29,6 +35,46 @@ public class StripDecorator : MonoBehaviour
         pool = new GameObject[poolSize];
 
         InitializeBlocks();
+    }
+
+    private void Update()
+    {
+        if(gameManager.GetRunStartTime() > 0)
+        { // if run started
+            Debug.Log(Time.time - gameManager.GetRunStartTime());
+
+            // try to set new numberOfBlocksToSpawn (it will succeed if enough time has passed)
+            TrySetNewNumberOfBlocksToSpawnAtTime(10, 2);
+            TrySetNewNumberOfBlocksToSpawnAtTime(30, 3);
+            TrySetNewNumberOfBlocksToSpawnAtTime(70, 4);
+            TrySetNewNumberOfBlocksToSpawnAtTime(120, 5);
+        }
+    }
+
+    private void TrySetNewNumberOfBlocksToSpawnAtTime(float time, int newNumberOfBlocksToSpawn)
+    { // time - time from the start of the run when newNumberOfBlocksToSpawn will be set
+
+        float timeFromRunStart = Time.time - gameManager.GetRunStartTime();
+
+        // if blocks array isn't set already and time is right
+        if (blocks.Count < newNumberOfBlocksToSpawn && timeFromRunStart > time)
+        {
+            // set number of blocks to 3
+            numberOfBlocksToSpawn = newNumberOfBlocksToSpawn;
+
+            // add missing blocks to blocks array
+            for (int i = blocks.Count; i < numberOfBlocksToSpawn; i++)
+            {
+                // spawn the block (instantiate)
+                GameObject newBlock = GameObject.Instantiate(ChooseNextBlock(), new Vector3(-500, 0, transform.position.z), Quaternion.identity);
+
+                // set parent of the block
+                newBlock.transform.SetParent(transform);
+
+                // add the block to the list of blocks
+                blocks.Add(newBlock);
+            }
+        }
     }
 
     private void InitializeBlocks()
@@ -155,10 +201,6 @@ public class StripDecorator : MonoBehaviour
 
             // set reference to this new block
             blocks[i] = nextBlock;
-
-            // in case block is disabled (happens with coins and other collectibles) enable it
-            //if (!blocks[i].activeInHierarchy)
-            //    blocks[i].SetActive(true);
 
             // in case block is disabled (happens with coins and other collectibles) enable it
             blocks[i].GetComponent<Block>().ReinitializeBlock();
