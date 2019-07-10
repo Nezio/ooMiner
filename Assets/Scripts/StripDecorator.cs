@@ -41,7 +41,7 @@ public class StripDecorator : MonoBehaviour
     {
         if(gameManager.GetRunStartTime() > 0)
         { // if run started
-            Debug.Log(Time.time - gameManager.GetRunStartTime());
+            //Debug.Log(Time.time - gameManager.GetRunStartTime());
 
             // try to set new numberOfBlocksToSpawn (it will succeed if enough time has passed)
             TrySetNewNumberOfBlocksToSpawnAtTime(10, 2);
