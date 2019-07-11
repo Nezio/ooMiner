@@ -1867,16 +1867,19 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b92a07b6b9ac8647bf8245ecdf9097c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraBackwardsViewDistance: 5
-  defaultCameraSpeed: 0.5
-  maxCameraSpeed: 3
-  secondsToReachMaxSpeed: 300
-  cameraSpeed: 0
+  backwardsViewDistance: 5
+  startingSpeed: 0.5
+  maxSpeed: 1
+  secondsToReachMaxSpeed: 180
+  playerFarSpeed: 3
+  speed: 0
+  maxPlayerDistance: 15
+  player: {fileID: 1168416703}
 --- !u!1001 &971478964
 PrefabInstance:
   m_ObjectHideFlags: 0

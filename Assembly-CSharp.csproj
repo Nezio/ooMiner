@@ -68,7 +68,6 @@
     <Compile Include="Assets\Scripts\Audio\Music.cs" />
     <Compile Include="Assets\Scripts\Audio\Sound.cs" />
     <Compile Include="Assets\Scripts\Block.cs" />
-    <Compile Include="Assets\Scripts\CameraControler_Snap.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\ChildDontRotateWithParent.cs" />
     <Compile Include="Assets\Scripts\Coin.cs" />

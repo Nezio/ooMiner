@@ -73,7 +73,7 @@ public class Level : MonoBehaviour
         float distanceCameraToFirstStrip = mainCamera.transform.position.z - strips[0].transform.position.z;
         //Debug.Log(distanceCameraToFirstStrip);
         // how many strips are out of view
-        int stripsOutOfView = Mathf.FloorToInt(distanceCameraToFirstStrip) - cameraController.cameraBackwardsViewDistance;
+        int stripsOutOfView = Mathf.FloorToInt(distanceCameraToFirstStrip) - cameraController.backwardsViewDistance;
 
         // generate new strips if there are more strips out of view than number of strips that can spawn at a time
         if (stripsOutOfView >= generateStripCount)

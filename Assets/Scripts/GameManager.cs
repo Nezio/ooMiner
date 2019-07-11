@@ -128,7 +128,7 @@ public class GameManager : MonoBehaviour
         tutorialWindowActive = false;   // used to make sure it doesn't appear in this run anymore
 
         // start camera movement
-        cameraController.SetCameraSpeed(cameraController.defaultCameraSpeed);
+        cameraController.SetCameraSpeed(cameraController.startingSpeed);
 
         // record time at run start
         runStartTime = Time.time;

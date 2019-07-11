@@ -15,10 +15,5 @@ public class Strip : MonoBehaviour
     {
         return type;
     }
-
-    // array of decorations ?
-
-    // decoration generator ?
-
-    // redecorator ?
+    
 }

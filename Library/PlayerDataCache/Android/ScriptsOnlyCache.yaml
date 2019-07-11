@@ -124,33 +124,33 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9726}
     - Class: 114
-      Script: {instanceID: 9922}
+      Script: {instanceID: 9924}
     - Class: 114
-      Script: {instanceID: 9964}
+      Script: {instanceID: 9966}
     - Class: 114
-      Script: {instanceID: 10088}
+      Script: {instanceID: 10090}
     - Class: 114
-      Script: {instanceID: 10150}
+      Script: {instanceID: 10152}
     - Class: 114
-      Script: {instanceID: 10184}
+      Script: {instanceID: 10186}
     - Class: 114
-      Script: {instanceID: 10194}
+      Script: {instanceID: 10196}
     - Class: 114
-      Script: {instanceID: 10226}
+      Script: {instanceID: 10228}
     - Class: 114
-      Script: {instanceID: 10368}
+      Script: {instanceID: 10370}
     - Class: 114
-      Script: {instanceID: 10468}
+      Script: {instanceID: 10470}
     - Class: 114
-      Script: {instanceID: 10540}
+      Script: {instanceID: 10542}
     - Class: 114
-      Script: {instanceID: 10594}
+      Script: {instanceID: 10596}
     - Class: 114
-      Script: {instanceID: 10624}
-    - Class: 114
-      Script: {instanceID: 10644}
+      Script: {instanceID: 10626}
     - Class: 114
       Script: {instanceID: 10646}
+    - Class: 114
+      Script: {instanceID: 10648}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -233,21 +233,21 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9770}
     - Class: 114
-      Script: {instanceID: 9916}
+      Script: {instanceID: 9918}
     - Class: 114
-      Script: {instanceID: 9964}
+      Script: {instanceID: 9966}
     - Class: 114
-      Script: {instanceID: 10104}
+      Script: {instanceID: 10106}
     - Class: 114
-      Script: {instanceID: 10114}
+      Script: {instanceID: 10116}
     - Class: 114
-      Script: {instanceID: 10194}
+      Script: {instanceID: 10196}
     - Class: 114
-      Script: {instanceID: 10368}
+      Script: {instanceID: 10370}
     - Class: 114
-      Script: {instanceID: 10498}
+      Script: {instanceID: 10500}
     - Class: 114
-      Script: {instanceID: 10644}
+      Script: {instanceID: 10646}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -318,13 +318,13 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9408}
     - Class: 114
-      Script: {instanceID: 9964}
+      Script: {instanceID: 9966}
     - Class: 114
-      Script: {instanceID: 10104}
+      Script: {instanceID: 10106}
     - Class: 114
-      Script: {instanceID: 10194}
+      Script: {instanceID: 10196}
     - Class: 114
-      Script: {instanceID: 10570}
+      Script: {instanceID: 10572}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -1012,7 +1012,7 @@ ScriptsOnlyBuild:
     className: ButtonSounds
   - hash:
       serializedVersion: 2
-      Hash: 8c8bd74a0bc3b3f899bdf7584223d09b
+      Hash: 318ca7d6d80c1ed8e4abb97aeffa6a4f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CameraController
@@ -1123,4 +1123,4 @@ ScriptsOnlyBuild:
   - Assets/Scenes/MainMenu.unity
   - Assets/Scenes/Game.unity
   - Assets/Scenes/OptionsMenu.unity
-  playerPath: D:/Development/Unity/ooMiner/Builds/ooMiner v0.8.0.apk
+  playerPath: D:/Development/Unity/ooMiner/Builds/ooMiner v0.9.0.apk
